@@ -43,6 +43,8 @@ If you don't get any messages, everything went well. Don't delete the database j
 
 Remote connectivity enables you to connect to the server from other machines. Currently, only local connections are accepted.
 
+<section class="information">
+
 ### Why ain't it working?
 
 For debugging purposes, you can enable the output that is given to us by PostgreSQL. Alter the following line in
@@ -50,7 +52,10 @@ For debugging purposes, you can enable the output that is given to us by Postgre
 
     silent_mode = off
 
-Restart the server with ``/usr/local/etc/rc.d/postgresql restart`` for the changes to take effect.
+Restart the server with ``/usr/local/etc/rc.d/postgresql restart`` for the
+changes to take effect.
+
+</section>
 
 We want the PostgreSQL server to listen to it's own public IP address instead of only local connections. Again in ``/usr/local/pgsql/data/postgresql.conf`` append your remote address to the following line:
 
@@ -79,21 +84,26 @@ This way, everyone can connect to the server if they supply a correct user and p
     $IPF 130 allow tcp from any to any 5432 in
     $IPF 140 allow tcp from any to any 5432 out
     
+
+<section class="information">
+
+### ``psql`` on MacOSX
+
+``psql`` command comes with the PostgreSQL installation package. I didn't have it on my Mac, so I installed PostgreSQL with the help of [Homebrew].
+
+    brew install postgresql
+    
+[Homebrew]: http://mxcl.github.com/homebrew/
+
+</section>
+    
 Apply the settings by running ``sh /usr/local/etc/ipwf.rules``. You can now try to connect to the remote database by typing on your local box:
 
     psql -U pg_test -d db_test -h 192.168.99.67
 
 Replace "192.168.99.67" by the IP address of you server. If you followed along with the above, you should be able to connect to the server. If you can't connect, but also don't get any errors, check your firewall rules.
 
-### NB: psql Not Found
-
-psql command comes with the PostgreSQL installation package. I didn't have it on my Mac, so I installed PostgreSQL with the help of [Homebrew].
-
-    brew install postgresql
-
 You now have a PostgreSQL that is configured for remote access, but the current configuration is not secure enough. Everyone is able to connect to the server and all the communication that is send is unencrypted. In the following chapter we will make it more secure by using SSL to encrypt and also limit those that can connect to PostgreSQL.
-
-[Homebrew]: http://mxcl.github.com/homebrew/
 
 ## Security measures
 

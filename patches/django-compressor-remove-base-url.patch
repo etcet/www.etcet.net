@@ -1,0 +1,73 @@
+From 1c4c060695d847f8491d348b6989b9ed87b628bf Mon Sep 17 00:00:00 2001
+From: Petar Radosevic <petar@wunki.org>
+Date: Tue, 11 Jan 2011 20:27:00 +0100
+Subject: [PATCH 1/2] Fallback to MEDIA_ROOT to return the filename.
+
+---
+ compressor/base.py |   18 ++++++++++++------
+ 1 files changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/compressor/base.py b/compressor/base.py
+index cbe4be3..61333ae 100644
+--- a/compressor/base.py
++++ b/compressor/base.py
+@@ -22,12 +22,18 @@ class Compressor(object):
+         raise NotImplementedError('split_contents must be defined in a subclass')
+ 
+     def get_filename(self, url):
+-        if not url.startswith(self.storage.base_url):
+-            raise UncompressableFileError('"%s" is not in COMPRESS_URL ("%s") and can not be compressed' % (url, self.storage.base_url))
+-        basename = url.replace(self.storage.base_url, "", 1)
+-        if not self.storage.exists(basename):
+-            raise UncompressableFileError('"%s" does not exist' % self.storage.path(basename))
+-        return self.storage.path(basename)
++        try:
++            base_url = self.storage.base_url
++        except AttributeError:
++            base_url = django_settings.MEDIA_URL
++
++        if not url.startswith(base_url):
++            raise UncompressableFileError('"%s" is not in COMPRESS_URL ("%s") and can not be compressed' % (url, base_url))
++        basename = url.replace(base_url, "", 1)
++        filename = os.path.join(django_settings.MEDIA_ROOT, basename)
++        if not os.path.exists(filename):
++            raise UncompressableFileError('"%s" does not exist' % filename)
++        return filename
+ 
+     def _get_parser(self):
+         if self._parser:
+-- 
+1.7.2.3
+
+
+From 67690d42dc4b53310e6f20b8ce3603331f1d1a45 Mon Sep 17 00:00:00 2001
+From: Petar Radosevic <petar@wunki.org>
+Date: Tue, 11 Jan 2011 21:03:03 +0100
+Subject: [PATCH 2/2] Using the settings of django_compressor.
+
+---
+ compressor/base.py |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/compressor/base.py b/compressor/base.py
+index 61333ae..9f3baab 100644
+--- a/compressor/base.py
++++ b/compressor/base.py
+@@ -25,12 +25,12 @@ class Compressor(object):
+         try:
+             base_url = self.storage.base_url
+         except AttributeError:
+-            base_url = django_settings.MEDIA_URL
++            base_url = settings.MEDIA_URL
+ 
+         if not url.startswith(base_url):
+             raise UncompressableFileError('"%s" is not in COMPRESS_URL ("%s") and can not be compressed' % (url, base_url))
+         basename = url.replace(base_url, "", 1)
+-        filename = os.path.join(django_settings.MEDIA_ROOT, basename)
++        filename = os.path.join(settings.MEDIA_ROOT, basename)
+         if not os.path.exists(filename):
+             raise UncompressableFileError('"%s" does not exist' % filename)
+         return filename
+-- 
+1.7.2.3
+

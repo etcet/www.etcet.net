@@ -4,6 +4,7 @@ module Main where
 import Prelude hiding (id)
 import Control.Arrow ((>>>), (***), arr)
 import Control.Category (id)
+import Control.Monad (forM_)
 import Data.Monoid (mempty, mconcat)
 
 import Hakyll
@@ -11,58 +12,87 @@ import Hakyll
 main :: IO ()
 main = hakyll $ do
     -- Compress CSS
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
+    match "stylesheets/*" $ do
+      route   idRoute
+      compile compressCssCompiler
+    
+    -- Copy images
+    match "images/*" $ do
+      route   idRoute
+      compile copyFileCompiler
+      
+    -- Copy javascripts
+    match "javascripts/*" $ do
+      route   idRoute
+      compile copyFileCompiler
 
+    -- Copy files
+    match "files/*" $ do
+      route   idRoute
+      compile copyFileCompiler
+
+    -- Copy files
+    match "patches/*" $ do
+      route   idRoute
+      compile copyFileCompiler
+          
     -- Render posts
     match "posts/*" $ do
-        route   $ setExtension ".html"
-        compile $ pageCompiler
-            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-            >>> renderTagsField "prettytags" (fromCapture "tags/*")
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
-            >>> relativizeUrlsCompiler
+      route   $ setExtension ".html"
+      compile $ pageCompiler
+        >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+        >>> renderTagsField "prettytags" (fromCapture "tags/*")
+        >>> applyTemplateCompiler "templates/post.html"
+        >>> applyTemplateCompiler "templates/default.html"
+        >>> relativizeUrlsCompiler
 
     -- Render posts list
     match "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
-        >>> arr (setField "title" "All posts")
-        >>> requireAllA "posts/*" addPostList
-        >>> applyTemplateCompiler "templates/posts.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
+      >>> arr (setField "title" "All posts")
+      >>> requireAllA "posts/*" addPostList
+      >>> applyTemplateCompiler "templates/posts.html"
+      >>> applyTemplateCompiler "templates/default.html"
+      >>> relativizeUrlsCompiler
 
     -- Index
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
-        >>> arr (setField "title" "Home")
-        >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
-        >>> requireAllA "posts/*" (id *** arr (take 10 . reverse . sortByBaseName) >>> addPostList)
-        >>> applyTemplateCompiler "templates/index.html"
-        >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
+      >>> arr (setField "title" "Home")
+      >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
+      >>> requireAllA "posts/*" (id *** arr (take 10 . reverse . sortByBaseName) >>> addPostList)
+      >>> applyTemplateCompiler "templates/index.html"
+      >>> applyTemplateCompiler "templates/default.html"
+      >>> relativizeUrlsCompiler
 
     -- Tags
     create "tags" $
-        requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
+      requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
 
     -- Add a tag list compiler for every tag
     match "tags/*" $ route $ setExtension ".html"
     metaCompile $ require_ "tags"
-        >>> arr tagsMap
-        >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
+      >>> arr tagsMap
+      >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
 
     -- Render RSS feed
     match "rss.xml" $ route idRoute
     create "rss.xml" $
-        requireAll_ "posts/*"
-            >>> mapCompiler (arr $ copyBodyToField "description")
-            >>> renderRss feedConfiguration
-
+      requireAll_ "posts/*"
+        >>> mapCompiler (arr $ copyBodyToField "description")
+        >>> renderRss feedConfiguration
+            
     -- Read templates
     match "templates/*" $ compile templateCompiler
+    
+        -- Render some static pages
+    forM_ ["about.markdown"] $ \p ->
+        match p $ do
+            route $ setExtension ".html"
+            compile $ pageCompiler
+                >>> applyTemplateCompiler "templates/default.html"
+                >>> relativizeUrlsCompiler
+
   where
     renderTagCloud' :: Compiler (Tags String) String
     renderTagCloud' = renderTagCloud tagIdentifier 100 120
@@ -90,10 +120,15 @@ makeTagList tag posts =
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
 
+config :: HakyllConfiguration
+config = defaultHakyllConfiguration
+    { deployCommand = "rsync --checksum -ave _site/* /Volumes/wunki-blog/wunki" }
+    
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-    { feedTitle       = "Wunki RSS feed."
-    , feedDescription = "."
-    , feedAuthorName  = "Jasper Van der Jeugt"
-    , feedRoot        = "http://example.com"
+    { feedTitle = "Wunki"
+    , feedDescription = "A Few Bytes of Petar Radosevic"
+    , feedAuthorName = "Petar Radosevic"
+    , feedRoot = "http://www.wunki.org"
     }
+

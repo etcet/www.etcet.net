@@ -4,7 +4,7 @@ description: Installation of a clean FreeBSD server.
 tags: freebsd, server
 ---
 
-![FreeBSD Logo](/img/posts/freebsd-logo.png "FreeBSD Logo")
+![FreeBSD Logo](/images/posts/freebsd-logo.png "FreeBSD Logo")
 
 FreeBSD, the high quality, free, operating system is now available as VPS on [Amazon EC2] (thanks [Colin Percival]) and on [Brightbox]. That should be enough reasons for server enthusiasts to give it a spin. In the following guide I will describe how to build a solid foundation on which to further develop your web- or database-server. I covers things as updating your system, adding administrator users and securing your system. Within no-time you will have a solid, secure server.
 
@@ -48,6 +48,19 @@ The first thing you need to do is set the password for root. Type in ``passwd`` 
 
 ## Upgrade to Latest Release
 
+<section class="information">
+
+### What's the diff?
+
+What's the difference between upgrade and update? It turns out that you call
+it an upgrade when there is a big version change, often meaning that the first
+sequence of the version number gets a plus one. An update is when there is a
+small change in the software, mostly a version bump in the final sequence of
+the versioning number. So if you grow a beard, don't say your upgrading your
+looks, you are just updating them to pirate standards.
+
+</section>
+
 _The latest, stable, release is currently 8.2. You only need to follow these instructions if you have a older version of FreeBSD._ 
 
 My server came with 8.1 installed and a newer release ([8.2]) is available. Let's upgrade to the this release as documented in the [handbook]. The following command analyses the system and looks at what should be upgraded. 
@@ -67,11 +80,19 @@ At completion you are asked to reboot. After reboot run the ``freebsd-update`` c
 
 You're system is now almost up-to-date. We only need to recompile all the packages that are currently installed. For this we first need to get the ports and install a ports management tool.
 
-### What's the diff?
-
-What's the difference between upgrade and update? It turns out that you call it an upgrade when there is a big version change, often meaning that the first sequence of the version number gets a plus one. An update is when there is a small change in the software, mostly a version bump in the final sequence of the versioning number. So if you grow a beard, don't say your upgrading your looks, you are just updating them to pirate standards.
-
 ## Install Packages by Using Ports
+
+<section class="information">
+
+### Ports versus Packages
+
+If you don't want to compile your software through ports, FreeBSD also comes with a package manner similar to [aptitude] found on Debian systems.  In FreeBSD it's called ``pkg_add``. You can read about the benefits on the [Software Installation] page in the FreeBSD handbook. In short, ports for control, packages for convenience.
+
+[aptitude]: http://en.wikipedia.org/wiki/Aptitude_(software)
+[Software Installation]: http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports-overview.html
+
+</section>
+
 
 Ports are a set of Makefiles, patches and descriptions that will build and install a package optimized for FreeBSD. Run the following two commands as
 root:
@@ -107,13 +128,6 @@ Update the packages with:
 	portmaster -a
 
 Your system is now running on the latest release, and updated it to the latest packages.
-
-### Ports versus Packages
-
-If you don't want to compile your software through ports, FreeBSD also comes with a package manner similar to [aptitude] found on Debian systems.  In FreeBSD it's called ``pkg_add``. You can read about the benefits on the [Software Installation] page in the FreeBSD handbook. In short, ports for control, packages for convenience.
-
-[aptitude]: http://en.wikipedia.org/wiki/Aptitude_(software)
-[Software Installation]: http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports-overview.html
 
 ### Keeping up-to-date
 
@@ -179,7 +193,7 @@ It's advised to also change your ``Port`` setting to something different than 22
 
 If you are able to connect with this user you can close of the root shell and start using this user account for administrative tasks. You can run commands that require root by switching to the root user with the ``su`` command and supplying the root password.
 
-#### SSH Config
+### SSH Config
 
 Save your memory for something worthwhile and add your servers to the ``.ssh/config`` file. As an example:
 
@@ -191,16 +205,20 @@ With this entry I'm able to do ``ssh example.com`` and I will connect to "exampl
 
 ## Time synchronization
 
+<section class="information">
+
+### Withstanding the test of time
+
+Want to test if ntp is doing it's work? You can set the time to four thirty by typing ``date 1630`` in your terminal. Reboot the server and run ``date`` to see if your clock is set correctly. If you want to test how ntpd works, don't adjust your time more than 1000 seconds away from the current time because nptd will think your nuts ([sanity check])!
+
+</section>
+
 We want our clock on the server to stay accurate. To accomplish this we will be using [NTP] that connects to the internet and checks if the servers date is still correct. Add the following two lines to your ``/etc/rc.conf`` file:
 
     ntpdate_enable="YES"
     ntpd_enable="YES"
 
 ntpdate will make sure that your server time is correct when the server boots up. ntpd corrects the clock gradually while your server is running. You can do some further configuration by editing ``/etc/ntp.conf`` but we won't do it here because it's default settings are good for most.
-
-### Withstanding the test of time
-
-Want to test if ntp is doing it's work? You can set the time to four thirty by typing ``date 1630`` in your terminal. Reboot the server and run ``date`` to see if your clock is set correctly. If you want to test how ntpd works, don't adjust your time more than 1000 seconds away from the current time because nptd will think your nuts ([sanity check])!
 
 ## Firewall with ipfw
 

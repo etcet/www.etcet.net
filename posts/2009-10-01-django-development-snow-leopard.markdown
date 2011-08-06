@@ -1,7 +1,7 @@
 ---
 title: Django Development on Snow Leopard
 description: Installing a development environment for Django on Snow Leopard by using virtual environments
-date: 1 October, 2009
+tags: django, snow leopard
 ---
 __Update June, 2011__: Development on Snow Leopard just got a heck of a lot easier with the [homebrew] package. I'm going to give you a short walkthrough. First install homebrew by executing the following command in your shell:
 
@@ -29,7 +29,7 @@ Make sure to put the following in your shells configuration file, usually ``~/.b
       source /usr/local/bin/virtualenvwrapper.sh
 	fi
 
-This will keep al your virtual enviroments in the ``~/.virtualenvs`` path. That's all there is to it these days. Django development just got a lot easier! You can read more about how to use these tools at the bottom of this page "[Combining all the tools]" 
+This will keep al your virtual enviroments in the ``~/.virtualenvs`` path. That's all there is to it these days. Django development just got a lot easier! You can read more about how to use these tools at the bottom of this page "[Combining all the tools]"
 
 [homebrew]: http://mxcl.github.com/homebrew/
 [install XCode]: http://developer.apple.com/technologies/xcode.html
@@ -44,7 +44,8 @@ I got my Snow Leopard in the mail lately and I decided to do a format before ins
 * [PIP](http://pypi.python.org/pypi/pip)
 * [Virtualenv](http://pypi.python.org/pypi/virtualenv)
 * [Virtualenvwrapper](http://www.doughellmann.com/projects/virtualenvwrapper/)
-* [Imaging Library](http://www.pythonware.com/products/pil/) (with JPEG and Freetype support)
+* [Imaging Library](http://www.pythonware.com/products/pil/) (with JPEG and
+  Freetype support)
 
 When everything is installed I will describe in short how we develop our Django site's at [Bread & Pepper](http://breadandpepper.com) with all these shiny new tools.
 

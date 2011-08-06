@@ -1,7 +1,11 @@
-<h1>$title$</h1>
-
-<p>by <em>$author$</em> on <strong>$date$</strong></p>
-
-<p>Tagged as: $prettytags$.</p>
-
-$body$
+<article>
+  <header>
+    <p class="meta">
+      <time class="timeago" datetime="$date$" pubdate>$date$</time>, tagged $prettytags$.</p>
+    </p>
+    <h1>$title$</h1>
+    </header>
+  <section>
+    $body$    
+  </section>
+</article>
