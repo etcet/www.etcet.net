@@ -1,5 +1,6 @@
 ---
 title: 404: Page Not Found
+bodyclass: default
 ---
 # 404: Page Not Found
 The page you tried to open could not be found. You might find what you are looking for on the [homepage](/) though.

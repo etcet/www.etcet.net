@@ -22,7 +22,7 @@ main = hakyll $ do
     match "images/*" $ do
       route   idRoute
       compile copyFileCompiler
-      
+    
     -- Copy javascripts
     match "javascripts/*" $ do
       route   idRoute
@@ -81,13 +81,10 @@ main = hakyll $ do
     metaCompile $ require_ "tags"
       >>> arr tagsMap
       >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
-
+        
     -- Render RSS feed
     match "rss.xml" $ route idRoute
-    create "rss.xml" $
-      requireAll_ "posts/*"
-        >>> mapCompiler (arr $ copyBodyToField "description")
-        >>> renderRss feedConfiguration
+    create "rss.xml" $ requireAll_ "posts/*" >>> renderRss feedConfiguration
             
     -- Read templates
     match "templates/*" $ compile templateCompiler

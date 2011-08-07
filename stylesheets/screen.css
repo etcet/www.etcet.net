@@ -199,8 +199,13 @@ header h1 a:hover {
 
 div.container { margin: 50px 0 0 140px; }
 
-/* custom pages 
-   about page */
+/* custom pages */
+body.default div.container { padding-top: 5px; }
+body.default div.container h1 a,
+body.default div.container h2 a,
+body.default div.container h3 a { color: #000; }
+
+/* about page */
 body.about figure { float: right; }
 body.about div.container { padding-top: 5px; }
 body.about div.container h1 a,
