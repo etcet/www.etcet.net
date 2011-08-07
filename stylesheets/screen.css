@@ -148,12 +148,11 @@ nav h1 { text-align: center; }
 ol#toc { padding: 0;}
 ol#toc li { list-style-type: none; }
 ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: italic; color: #333;}
-ol#toc li p a { color: #000; font-weight: 600; }
-ol#toc li h2 { margin: 0em; padding: 0; text-transform: capitalize; font-size: 1.2em; }
+ol#toc li h2 { margin: 0em; padding: 0; text-transform: capitalize; font-size: 1.3em;}
 
 /* Syntax */
 article code { font-size: 0.8em; }
-article pre { border: 1px solid #efefef; padding: 0.5em;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; width: 100; }
+article pre { border: 1px solid #efefef; padding: 0.5em;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
 
 article pre code { background-color: transparent; margin: 0; padding: 0; }
 table.sourceCode { border: 1px solid #efefef;}

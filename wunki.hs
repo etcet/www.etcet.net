@@ -90,7 +90,7 @@ main = hakyll $ do
     match "templates/*" $ compile templateCompiler
     
         -- Render some static pages
-    forM_ ["about.markdown"] $ \p ->
+    forM_ ["about.markdown", "404.markdown"] $ \p ->
         match p $ do
             route $ setExtension ".html"
             compile $ wunkiCompiler

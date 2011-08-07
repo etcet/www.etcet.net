@@ -72,20 +72,22 @@ You can now install gunicorn with:
 
 After installation, you can either run gunicorn with the ``manage.py`` command, or with it's own ``gunicorn`` command. We will use the ``manage.py`` command, and for this to work we need to append ``gunicorn`` to our ``INSTALLED_APPS`` tuple in ``settings.py``. After that, try running your application with ``./manage.py run_gunicorn``. We want to have some additional settings that we will place in ``gunicorn.conf.py`` file inside our project directory. This is my gunicorn configuration:
 
-	import os
+~~~ {.python}
+import os
 
-	def numCPUs():
-    	if not hasattr(os, "sysconf"):
-			raise RuntimeError("No sysconf detected.")
-		return os.sysconf("SC_NPROCESSORS_ONLN")
+def numCPUs():
+    if not hasattr(os, "sysconf"):
+        raise RuntimeError("No sysconf detected.")
+    return os.sysconf("SC_NPROCESSORS_ONLN")
 
-	user = <your-user>
-	workers = numCPUs() * 2 + 1
-	bind = "127.0.0.1:8000"
-	pidfile = "/tmp/gunicorn-demo.pid"
-	backlog = 2048
-	logfile = "home/<your-user>/log/gunicorn_demo.log"
-	loglevel = "info"
+user = <your-user>
+workers = numCPUs() * 2 + 1
+bind = "127.0.0.1:8000"
+pidfile = "/tmp/gunicorn-demo.pid"
+backlog = 2048
+logfile = "home/<your-user>/log/gunicorn_demo.log"
+loglevel = "info"
+~~~
 
 If that starts up, we want to proxy to this server with our nginx server.
 
@@ -108,21 +110,23 @@ If you have opened up port 80 (HTTP) in your Amazon security group, you should s
 
 Let's create a proxy inside nginx that will redirect incoming traffic (port 80) to our local gunicorn (port 8000). Open up ``/usr/local/etc/nginx/nginx.conf`` and replace the ``server`` section with the following:
 
-	server {
- 		listen       80;
-		server_name  www.mydomain.com;
-		access_log  /var/log/nginx/nginx-access.log;
+~~~
+server {
+  listen       80;
+  server_name  www.mydomain.com;
+  access_log   /var/log/nginx/nginx-access.log;
 		
-		location  /media/ {
-			root /home/user/apps/demo;
-		}
+  location  /media/ {
+    root /home/user/apps/demo;
+  }
+  
+  location / {
+    proxy_pass   http://127.0.0.1:8000;
+  }
+}
+~~~
 
-		location / {
-			proxy_pass   http://127.0.0.1:8000;
-		}
-	}
-
-This is a minimal configuration that will accomplish the following; when the browser requests the ``/media/`` path, nginx will return static files located in ``/home/user/apps/demo/media/`` directory. Following that is the proxy location which will handle all the remaining requests and proxy them to gunicorn. When you have customized the above config for your own needs, restart the nginx server as root with ``/usr/local/etc/rc.d/nginx restart``. If you don't receive any warnings from nginx, start up your gunicorn process, this time with your user account, and open your domain in the browser. You should now be able to see your Django project. The main things are working right now, we only don't want to manually start our gunicorn processes. For this we need the final piece in the stack; [supervisor].
+This is a minimal configuration that will accomplish the following; when the browser requests the ``/media/`` path, nginx will return static files located in ``/home/user/apps/demo/media/`` directory. Following that is the proxy location which will handle all the remaining requests and proxy them to gunicorn. When you have customized the above config for your own needs, restart the nginx server as root with ``/usr/local/etc/rc.d/nginx restart``. If you don't receive any warnings from nginx, start up your gunicorn process, this time with your user account, and open your domain in the browser. You should now be able to see your Django project. The main things are working right now, we only don't want to manually start our gunicorn processes. For this we need the final piece in the stack, [supervisor].
 
 [supervisor]: http://supervisord.org/ "Supervisor homepage"
 
