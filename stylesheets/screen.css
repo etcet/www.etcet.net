@@ -201,9 +201,6 @@ div.container { margin: 50px 0 0 140px; }
 
 /* custom pages */
 body.default div.container { padding-top: 5px; }
-body.default div.container h1 a,
-body.default div.container h2 a,
-body.default div.container h3 a { color: #000; }
 
 /* about page */
 body.about figure { float: right; }
@@ -218,3 +215,7 @@ body.postlist ul { padding: 0; }
 body.postlist li { list-style-type: none; }
 body.postlist li h2 { font-size: 1.2em; text-align: left; margin: 0; padding: 0;}
 body.postlist li p { font-size: 0.9em; }
+
+/* 404 */
+body.notfound div.container { padding-top: 0.1em; }
+body.notfound div.container h1 a { color: #000; }
