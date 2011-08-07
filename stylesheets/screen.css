@@ -100,8 +100,7 @@ article p.meta { font-size: 0.9em; font-family: Georgia,"Times New Roman",Times,
 article p.meta a { color: #555; }
 article sup a { color: #000; border-bottom: none; font-size: 0.8em; margin: 0; padding: 0; }
 article sup a:hover { background-color: #fff; color: #000; border-bottom: none; }
-article img { float: right; margin: 0 2em 1em 2em; }
-article .figure { text-align: center; }
+article figure { float: right; margin: 0 2em 1em 2em; }
 article dl { margin-left: 1em; }
 article section.information { margin: 0 0 1em 2em; border: 1px solid #efefef; float: right; width: 18em; color: #666; }
 article section.information p { padding: 1em; margin: 0; }

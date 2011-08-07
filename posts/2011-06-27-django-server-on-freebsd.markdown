@@ -1,7 +1,7 @@
 ---
 title: Solid FreeBSD Server: Django with Nginx and Gunicorn
-description: Running Django on FreeBSD with the help of Nginx and Gunicorn.
-tags: freebsd, server, django, nginx, gunicorn
+description: A guide that shows you how to setup a Django server on FreeBSD with the help of Nginx and Gunicorn.
+tags: freebsd, server, django, guide
 keywords: freebsd, server, django, nginx, gunicorn, supervisor
 ---
 

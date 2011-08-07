@@ -1,7 +1,7 @@
 ---
 title: Solid FreeBSD Server: the Foundation
-description: Installation of a clean FreeBSD server.
-tags: freebsd, server
+description: FreeBSD is my distro of choice whenever I need a server. This guide shows how to build a solid FreeBSD server from scratch.
+tags: freebsd, server, guide
 keywords: freebsd, server, basic, security, setup, ec2, brightbox
 ---
 

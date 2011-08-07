@@ -1,7 +1,7 @@
 ---
 title: Django Development on Snow Leopard
-description: Installing a development environment for Django on Snow Leopard by using virtual environments
-tags: django, snow-leopard
+description: A guide describing how to install a development environment for Django on Snow Leopard by using virtual environments.
+tags: django, guide
 keywords: django, snow leopard, mac, homebrew, setup, virtualenv, virtualenvwrapper, pip
 ---
 __Update June, 2011__: Development on Snow Leopard just got a heck of a lot easier with the [homebrew] package. I'm going to give you a short walkthrough. First install homebrew by executing the following command in your shell:
