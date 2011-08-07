@@ -43,6 +43,7 @@ main = hakyll $ do
       route   $ setExtension ".html"
       compile $ wunkiCompiler
         >>> arr (renderDateField "date" "%Y-%m-%d" "Date unknown")
+        >>> arr (setField "bodyclass" "post")
         >>> renderTagsField "prettytags" (fromCapture "tags/*")
         >>> applyTemplateCompiler "templates/post.html"
         >>> applyTemplateCompiler "templates/default.html"
@@ -52,6 +53,7 @@ main = hakyll $ do
     match "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
       >>> arr (setField "title" "All posts")
+      >>> arr (setField "bodyclass" "postlist")
       >>> requireAllA "posts/*" addPostList
       >>> applyTemplateCompiler "templates/posts.html"
       >>> applyTemplateCompiler "templates/default.html"
@@ -60,9 +62,10 @@ main = hakyll $ do
     -- Index
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
-      >>> arr (setField "title" "Wunki - a few bytes of Petar")
+      >>> arr (setField "title" "Wunki - Bits on the web by Petar")
       >>> arr (setField "description" description)
       >>> arr (setField "keywords" keywords)
+      >>> arr (setField "bodyclass" "default")
       >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
       >>> requireAllA "posts/*" (id *** arr (take 10 . reverse . sortByBaseName) >>> addPostList)
       >>> applyTemplateCompiler "templates/index.html"
@@ -124,7 +127,8 @@ makeTagList :: String
 makeTagList tag posts =
     constA (mempty, posts)
         >>> addPostList
-        >>> arr (setField "title" ("Posts tagged &#8216;" ++ tag ++ "&#8217;"))
+        >>> arr (setField "title" ("Posts tagged with &#8216;" ++ tag ++ "&#8217;"))
+        >>> arr (setField "bodyclass" "postlist")
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
 

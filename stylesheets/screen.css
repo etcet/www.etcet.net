@@ -88,7 +88,7 @@ p + p { text-indent:2em; margin-top:-1.5em; }
 form p + p { text-indent: 0; } /* Don't want this in forms. */
 
 /* footer */
-footer { border-top: 1px solid #d3d3d3; }
+footer { border-top: 1px solid #d3d3d3; margin-top: 2em; }
 footer p { padding: 10px 0; font-size: 0.8em; line-height: 1.1em; }
 
 /* article */
@@ -133,12 +133,7 @@ article section.information pre {
 section#page img { float: right; margin-left: 1.5em; text-align: center; }
 section#page h1 { margin: 0em 0 1em 0; }
 
-/* List of articles used on the 404 page. */
-ul#article-list { padding: 0; }
-ul#article-list li { list-style-type: none; }
-ul#article-list li h1 { font-size: 1.3em; text-align: left; margin: 0; padding: 0;}
-ul#article-list li h1 a { color: #000; }
-ul#article-list li p.meta { margin: 0; }
+
 
 /* about me */
 div.about { border-bottom: 1px solid #d3d3d3; border-top: 1px solid #d3d3d3; padding: 1.2em 0 0 0; }
@@ -147,7 +142,7 @@ div.about { border-bottom: 1px solid #d3d3d3; border-top: 1px solid #d3d3d3; pad
 nav h1 { text-align: center; }
 ol#toc { padding: 0;}
 ol#toc li { list-style-type: none; }
-ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: italic; color: #333;}
+ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: color: #333;}
 ol#toc li h2 { margin: 0em; padding: 0; text-transform: capitalize; font-size: 1.3em;}
 
 /* Syntax */
@@ -203,3 +198,18 @@ header h1 a:hover {
 }
 
 div.container { margin: 50px 0 0 140px; }
+
+/* custom pages 
+   about page */
+body.about figure { float: right; }
+body.about div.container { padding-top: 5px; }
+body.about div.container h1 a,
+body.about div.container h2 a,
+body.about div.container h3 a { color: #000; }
+
+/* postlist */
+body.postlist div.container { padding-top: 0.1em; }
+body.postlist ul { padding: 0; }
+body.postlist li { list-style-type: none; }
+body.postlist li h2 { font-size: 1.2em; text-align: left; margin: 0; padding: 0;}
+body.postlist li p { font-size: 0.9em; }

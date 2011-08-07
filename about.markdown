@@ -2,15 +2,12 @@
 title: The Guy Behind This Website
 description: A short summary about this website and the guy who runs it.
 keywords: about, petar, radosevic, wunki, setup, dotfiles, github, emacs, vim
+bodyclass: about
 ---
 
-# About Wunki
+#$title$
 
-<div style="float:right; margin: 0em 1em;">
-
-![Picture my mother took on my graduation -- June, 2010.](/images/mugshot.png)
-
-</div>
+![Picture taken at my graduation -- June, 2010.](/images/mugshot.png)
 
 Wunki is written by me, Petar Radošević, a '82 born Croatian living in the Netherlands. If a persons reflection can be shown by the things they enjoy doing in live, mine would be programming, reading books, playing basketball & soccer and watching a movie with my girl. Finally, added more recently, riding my bike. 
 
