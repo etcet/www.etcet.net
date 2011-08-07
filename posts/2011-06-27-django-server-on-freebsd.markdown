@@ -2,6 +2,7 @@
 title: Solid FreeBSD Server: Django with Nginx and Gunicorn
 description: Running Django on FreeBSD with the help of Nginx and Gunicorn.
 tags: freebsd, server, django, nginx, gunicorn
+keywords: freebsd, server, django, nginx, gunicorn, supervisor
 ---
 
 Let's continue in our series of creating, solid, [FreeBSD] server. This time we will get our [Django] web application running on a symbiosis of [gunicorn], [supervisor] and [nginx]. Nginx will run at the frontend and proxy the WSGI requests to gunicorn. The gunicorn processes will be monitored by supervisord, so that if one goes down, they will immediatly be put back up.

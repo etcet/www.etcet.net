@@ -6,11 +6,13 @@ import Control.Arrow ((>>>), (***), arr)
 import Control.Category (id)
 import Control.Monad (forM_)
 import Data.Monoid (mempty, mconcat)
+import Text.Pandoc (WriterOptions(..), defaultWriterOptions)
 
 import Hakyll
 
 main :: IO ()
 main = hakyll $ do
+  
     -- Compress CSS
     match "stylesheets/*" $ do
       route   idRoute
@@ -39,8 +41,8 @@ main = hakyll $ do
     -- Render posts
     match "posts/*" $ do
       route   $ setExtension ".html"
-      compile $ pageCompiler
-        >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+      compile $ wunkiCompiler
+        >>> arr (renderDateField "date" "%Y-%m-%d" "Date unknown")
         >>> renderTagsField "prettytags" (fromCapture "tags/*")
         >>> applyTemplateCompiler "templates/post.html"
         >>> applyTemplateCompiler "templates/default.html"
@@ -58,7 +60,9 @@ main = hakyll $ do
     -- Index
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
-      >>> arr (setField "title" "Home")
+      >>> arr (setField "title" "Wunki - a few bytes of Petar")
+      >>> arr (setField "description" description)
+      >>> arr (setField "keywords" keywords)
       >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
       >>> requireAllA "posts/*" (id *** arr (take 10 . reverse . sortByBaseName) >>> addPostList)
       >>> applyTemplateCompiler "templates/index.html"
@@ -89,7 +93,7 @@ main = hakyll $ do
     forM_ ["about.markdown"] $ \p ->
         match p $ do
             route $ setExtension ".html"
-            compile $ pageCompiler
+            compile $ wunkiCompiler
                 >>> applyTemplateCompiler "templates/default.html"
                 >>> relativizeUrlsCompiler
 
@@ -99,6 +103,10 @@ main = hakyll $ do
 
     tagIdentifier :: String -> Identifier (Page String)
     tagIdentifier = fromCapture "tags/*"
+    
+      -- Common variables
+    description = "Wunki is a few bits on the web placed there by Petar Radosevic. A place with ramblings about programming, server setups and personal experiences. You can either find the posts a few pixels down or read more about me."
+    keywords = "petar, radosevic, wunki, clojure, python, haskell, freebsd, django, api"
 
 -- | Auxiliary compiler: generate a post list from a list of given posts, and
 -- add it to the current page under @$posts@
@@ -119,6 +127,19 @@ makeTagList tag posts =
         >>> arr (setField "title" ("Posts tagged &#8216;" ++ tag ++ "&#8217;"))
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
+
+-- | Read a page, add default fields, substitute fields and render with Pandoc.
+--
+wunkiCompiler :: Compiler Resource (Page String)
+wunkiCompiler = pageCompilerWith defaultHakyllParserState wunkiWriterOptions
+        
+-- | Custom HTML options for pandoc        
+--
+wunkiWriterOptions :: WriterOptions
+wunkiWriterOptions = defaultHakyllWriterOptions
+  { writerHtml5 = True
+  , writerTableOfContents = True
+  }
 
 config :: HakyllConfiguration
 config = defaultHakyllConfiguration

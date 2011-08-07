@@ -2,6 +2,7 @@
 title: Solid FreeBSD Server: the Foundation
 description: Installation of a clean FreeBSD server.
 tags: freebsd, server
+keywords: freebsd, server, basic, security, setup, ec2, brightbox
 ---
 
 ![FreeBSD Logo](/images/posts/freebsd-logo.png "FreeBSD Logo")

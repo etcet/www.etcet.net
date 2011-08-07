@@ -1,7 +1,8 @@
 ---
 title: Django Development on Snow Leopard
 description: Installing a development environment for Django on Snow Leopard by using virtual environments
-tags: django, snow leopard
+tags: django, snow-leopard
+keywords: django, snow leopard, mac, homebrew, setup, virtualenv, virtualenvwrapper, pip
 ---
 __Update June, 2011__: Development on Snow Leopard just got a heck of a lot easier with the [homebrew] package. I'm going to give you a short walkthrough. First install homebrew by executing the following command in your shell:
 
@@ -150,7 +151,7 @@ Next we need to install the Freetype2 library. This is a lot simpler.
     cd freetype-2.3.9
     ./configure && make && sudo make install clean
 
-## [Combining all the tools](id:combining)
+## Combining all the tools
 
 You now have all those great tools installed, but what can you do with them? In this piece I'm going to describe how we work at [Bread & Pepper](http://breadandpepper.com). You will have your own workflow, but maybe you can get some tips from ours. The first thing I needed was a general Django requirements file for PIP. I have all my virtual environments in my `~/Sites/virtualenvs` directory this is also the place for my base requirements file for PIP. Create a new file with `vim ~/Sites/virtualenvs/django-basic-requirements.txt` and fill it with the following:
 
@@ -207,7 +208,7 @@ And they can start working on the new project.
 ## Conclusion
 
 Well, it was a long ride, but now you have a great Django development setup. It certainly made our lives easier by not constantly having to make sure that the right packages were installed. We also use the requirements files for our
-servers so deployment (with [Fabric](http://docs.fabfile.org 0.9/)) goes easy and secure. If you feel that I left something out, or made same errors, please do contact me.
+servers so deployment (with [Fabric](http://docs.fabfile.org)) goes easy and secure. If you feel that I left something out, or made same errors, please do contact me.
 
 ## Acknowledgements
 
