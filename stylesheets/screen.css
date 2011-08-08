@@ -172,22 +172,24 @@ header.home{
     position: fixed;
     left: 0;
     margin-top: 30px;
-    background: url("/images/background-header.png") no-repeat;
+    background: url("/images/wunki-label.png") no-repeat;
 }
 
 header.home h1 {
     margin: 0;
+    padding: 0;
     font-family: "Droid Sans", "Menlo", "monospace";
-    height: 50px;
-    width: 150px;
-    padding: 0.3em 0.1em 0.3em 0.5em;
+    height: 75px;
+    line-height: 75px;
+    text-indent: 0.6em;
+    width: 175px;
     z-index: 100; /* the stack order: foreground */
     text-transform: lowercase;
-	  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.6);
-	  -webkit-box-shadow: 0 0 5px rgba(0,0,0,6);
-	  -o-box-shadow: 0 0 5px rgba(0,0,0,0.6);
-	  box-shadow: 0 0 5px rgba(0,0,0,0.6);
-    text-shadow: 1px 1px 0px #ff3c31;
+	  -moz-box-shadow: 0 0 3px rgba(0,0,0,0.6);
+	  -webkit-box-shadow: 0 0 3px rgba(0,0,0,6);
+	  -o-box-shadow: 0 0 3px rgba(0,0,0,0.6);
+	  box-shadow: 0 0 3px rgba(0,0,0,0.6);
+    text-shadow: 0px -1px 0px #720103;
 }
 
 
