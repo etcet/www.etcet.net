@@ -179,8 +179,6 @@ header.home h1 {
     margin: 0;
     padding: 0;
     font-family: "Droid Sans", "Menlo", "monospace";
-    height: 75px;
-    line-height: 75px;
     text-indent: 0.6em;
     width: 175px;
     z-index: 100; /* the stack order: foreground */
@@ -193,10 +191,18 @@ header.home h1 {
 }
 
 
-header h1 a,
-header h1 a:hover { 
+header h1 a {
+    height: 75px;
+    line-height: 75px;
+    display: block;
     color: #fff;
 }
+
+header h1 a:hover {
+    color: #ffc7c4;
+    text-shadow: 0px -1px 0px #630103;
+}
+
 
 div.container { margin: 50px 0 0 140px; }
 
