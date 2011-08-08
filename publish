@@ -1,0 +1,66 @@
+#/usr/bin/env zsh
+
+sitedir="_site/"
+s3bucket="s3://s3.wunki.org"
+
+# Clean and build the site
+echo "Cleaning old files.."
+./wunki clean > /dev/null 2>&1
+
+echo "Building new site.."
+./wunki build > /dev/null 2>&1
+
+# Compress files
+echo "Zipping all source files.."
+for i in `find _site/ -name '*.js' -o -name '*.css' -o -name '*.html'`
+do
+  gzip -9 $i
+  mv $i.gz $i
+done
+
+# Upload all HTML
+echo "Upload .html files"
+s3cmd sync \
+      --acl-public \
+      --recursive \
+      --exclude "*" \
+      --include "*.html" \
+      --add-header "Content-Encoding: gzip" \
+      --add-header "Cache-Control: max-age=3600" \
+      $sitedir $s3bucket > /dev/null 2>&1
+
+# Upload the javascript and stylesheets
+echo "Upload .js and .css"
+s3cmd sync \
+      --acl-public \
+      --recursive \
+      --exclude "*" \
+      --include "*.js" \
+      --include "*.css" \
+      --add-header "Content-Encoding: gzip" \
+      --add-header "Cache-Control: max-age=2592000" \
+      $sitedir $s3bucket > /dev/null 2>&1
+
+# Upload the rest, non-compressed
+echo "Upload the rest.."
+s3cmd sync \
+      --acl-public \
+      --recursive \
+      --exclude "*.js" \
+      --exclude "*.css" \
+      --exclude "*.html" \
+      --add-header "Cache-Control: max-age=2592000" \
+      $sitedir $s3bucket > /dev/null 2>&1
+
+# Revalidate Cloudfront
+cfadmin invalidate s3.wunki.org.s3.amazonaws.com \
+       /index.html \
+       /stylesheets \
+       /images \
+       /posts \
+       /tags \
+       > /dev/null 2>&1
+
+# Finished, cleanup
+./wunki clean > /dev/null 2>&1
+echo "Finished uploading site.."
