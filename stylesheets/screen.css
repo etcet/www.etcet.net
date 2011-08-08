@@ -75,12 +75,14 @@ html {
     background-color: #fff;
 }
 
+div.container { margin: 50px 25px 50px 200px; }
+
 body {
     min-width: 728px;
     max-width: 960px;
     margin: 0 auto;
     position: relative;
-    padding: 0px 80px 40px;
+    padding: 0;
 }
 
 /* Indentation instead of line shifts for sibling paragraphs. */
@@ -204,7 +206,7 @@ header h1 a:hover {
 }
 
 
-div.container { margin: 50px 0 0 140px; }
+
 
 /* custom pages */
 body.default div.container { padding-top: 5px; }
