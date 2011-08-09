@@ -228,3 +228,36 @@ body.postlist li p { font-size: 0.9em; }
 /* 404 */
 body.notfound div.container { padding-top: 0.1em; }
 body.notfound div.container h1 a { color: #000; }
+
+#toTop {
+	display: none;
+	text-decoration: none;
+	position: fixed;
+	bottom: 0px;
+	right: 75px;
+	overflow: hidden;
+	width: 100px;
+	height: 40px;
+  line-height: 40px;
+  text-transform: lowercase;
+  background-color: #fbfbfb;
+  border-top: 1px solid #efefef;
+  border-left: 1px solid #efefef;
+  border-right: 1px solid #efefef;
+  font-size: 0.6em;
+  text-align: center;
+  font-family: "Droid Sans", "Menlo", "monospace";
+}
+
+a#toTop { color: #4D4D4D; }
+
+#toTopHover {
+	width: 100px;
+	height: 40px;
+}
+
+#toTopHover a { color: #333; }
+
+#toTop:active, #toTop:focus {
+	outline:none;
+}
