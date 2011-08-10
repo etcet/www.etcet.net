@@ -148,7 +148,7 @@ ol#toc li h2 { margin: 0em; padding: 0; text-transform: capitalize; font-size: 1
 
 /* Syntax */
 article code { font-size: 0.8em; }
-article pre { border: 1px solid #efefef; padding: 0.5em;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
+article pre { border: 1px solid #efefef; padding: 10px;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
 
 article pre code { background-color: transparent; margin: 0; padding: 0; }
 table.sourceCode { border: 1px solid #efefef;}
@@ -228,6 +228,19 @@ body.postlist li p { font-size: 0.9em; }
 /* 404 */
 body.notfound div.container { padding-top: 0.1em; }
 body.notfound div.container h1 a { color: #000; }
+
+span.language { 
+    border: 1px solid #efefef;
+    border-top: none;
+    border-right: none;
+    float: right;
+    margin: -10px;
+    text-align: right;
+    padding: 0.5em 1em;
+    font-size: 0.4em;
+    background-color: #fff;
+    color: #999;
+}
 
 #toTop {
 	display: none;
