@@ -17,7 +17,7 @@ Install [Mercurial] and [Git] with the following commands:
 	sudo pip install mercurial
 	brew install git
 
-[Virtualenv] and [Virtualenwrapper] can be installed with the following commands:
+[Virtualenv] and [Virtualenvwrapper] can be installed with the following commands:
 
 	sudo pip install virtualenv
 	sudo pip install virtualenvwrapper
@@ -32,8 +32,13 @@ Make sure to put the following in your shells configuration file, usually ``~/.b
 
 This will keep al your virtual enviroments in the ``~/.virtualenvs`` path. That's all there is to it these days. Django development just got a lot easier! You can read more about how to use these tools at the bottom of this page "[Combining all the tools]"
 
-[homebrew]: http://mxcl.github.com/homebrew/
-[install XCode]: http://developer.apple.com/technologies/xcode.html
+[homebrew]: http://mxcl.github.com/homebrew/ "homebrew Github page"
+[install XCode]: http://developer.apple.com/technologies/xcode.html "Xcode download page"
+[Mercurial]: http://mercurial.selenic.com/ "Mercurial homepage"
+[Git]: http://git-scm.com/ "Git homepage"
+[pip]: http://pypi.python.org/pypi/pip "Pip at PyPi"
+[Virtualenv]: https://github.com/pypa/virtualenv "Virtualenv Github page"
+[Virtualenvwrapper]: http://www.doughellmann.com/projects/virtualenvwrapper/ "Virtualenvwrapper Homepage"
 [Combining all the tools]: #combining "Combing all the tools"
 
 ## Introduction
@@ -199,7 +204,7 @@ Let's activate our environment, enter the right directory and create a new Djang
 
 Now when we enter the newly created directory, we can go start our Django server with `./manage.py runserver`.
 
-Another thing we do is placing a `requirements.txt` file inside our project directory (also under SCM[^3]) which points to all the specific packages needed for this particular Django project. This way every new developer only has to do the following:
+Another thing we do is placing a `requirements.txt` file inside our project directory (also under SCM) which points to all the specific packages needed for this particular Django project. This way every new developer only has to do the following:
 
     pip install -E magicpony -r virtualenvs/magicpony.com/magicpony/requirements.txt
 

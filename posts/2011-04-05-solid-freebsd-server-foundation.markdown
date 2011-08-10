@@ -221,6 +221,8 @@ We want our clock on the server to stay accurate. To accomplish this we will be 
 
 ntpdate will make sure that your server time is correct when the server boots up. ntpd corrects the clock gradually while your server is running. You can do some further configuration by editing ``/etc/ntp.conf`` but we won't do it here because it's default settings are good for most.
 
+[NTP]: http://www.ntp.org/ "Homepage of the Network Time Protocol"
+
 ## Firewall with ipfw
 
 We are going to add a firewall to the server and only keep the SSH port open. You could say that this is unnecessary on EC2, since it has security groups. But the firewall is so easy to setup, it never hurts to have an extra layer of security. ipfw also gives you some possibilities that security groups do not offer. It's installed by default on a FreeBSD box, so we can start by adding the following two lines in ``/etc/rc.conf``:
