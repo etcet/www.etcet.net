@@ -7,7 +7,7 @@ bodyclass: about
 
 #$title$
 
-![Picture taken at my graduation -- June, 2010.](/images/mugshot.png)
+![Headphones, Emacs, Bliss.](/images/writing-code.png)
 
 Wunki is written by me, Petar Radošević, a '82 born Croatian living in the Netherlands. If a persons reflection can be shown by the things they enjoy doing in live, mine would be programming, reading books, playing basketball & soccer and watching a movie with my girl. Finally, added more recently, riding my bike. 
 
