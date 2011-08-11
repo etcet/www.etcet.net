@@ -1,8 +1,8 @@
 --
 title: Foretelling Future Development
-keywords: clojure, objective-c, stanford
-tags: clojure, objective-c
-description: The roadmap I'm going to follow in 2012.
+keywords: clojure, objective-c, stanford, sicp, A.I, development, trajectory
+tags: clojure, objective-c, artificial-intelligence, sicp
+description: Done building non trivial projects, in this post I describe the steps I'm going to take to be able to build beautiful software that does difficult things. I can already tell you that it involves Objective-C, Clojure, Artificial Intelligence and S.I.C.P.
 --
 
 I started running a few weeks ago and I hated it. I would start cursing during running -- stupid thing to do, since I need the oxygen -- while hoping that with time it would be better. Within four weeks, I'm cursing less and maybe, eventually, I will like it. If not the running, at least the shower, pajama's and book afterwards.
