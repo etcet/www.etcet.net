@@ -41,10 +41,7 @@ I develop on my Macbook Pro (2011) which has 8GB of ram and a SSD harddisk (must
 
 ### Software
 
-My current editor is [Vim], terminal of choice is the new [iTerm2] terminal.
-[1Password] that generates a random password for every service that I use.
-[Chrome] and [Safari] for browsing the web and [org-mode] that manages my
-todo's and agenda. For music I rely on the excellent library of [Spotify].
+My current editor is [Vim], terminal of choice is the new [iTerm2] terminal. [1Password] that generates a random password for every service that I use. [Chrome] and [Safari] for browsing the web and [org-mode] that manages my todo's and agenda. For music I rely on the excellent library of [Spotify].
 
 [emacs]: http://www.gnu.org/software/emacs/ "Emacs homepage"
 [Clojure]: http://clojure.org
