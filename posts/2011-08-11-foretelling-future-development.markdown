@@ -54,12 +54,12 @@ Finished with the A.I. course I want to chisel away at the next challenge: learn
 
 ## Conclusion
 
-There you have it, the tools used in my life as a developer for the coming months or years. Creating simple and beautiful -- "weniger aber besser"[^4] -- software which solves hard problems. I will ease down on development of things within my comfort zone, things throwing only the occasional challenging task. It's time to move on to bigger challenges which require more. I'm confident that in the coming years I will be able to show you something beautiful. I'm scarred enough to know that this ideal is there to be compromised, but wise enough to keep trying to reach it. If you want to know how I'm doing, please follow me on Twitter ([@wunki_]) or this blog.
+There you have it, the tools used in my life as a developer for the coming months or years. Creating simple and beautiful -- "weniger aber besser"[^4] -- software which solves hard problems. I will ease down on development of things within my comfort zone, things throwing only the occasional challenging task. It's time to move on to bigger challenges which require more. I'm confident that in the coming years I will be able to show you something beautiful. I'm scarred enough to know that this ideal is there to be compromised, but wise enough to keep trying to reach it. If you want to know how I'm doing, please follow me on Twitter ([@wunki]) or this blog.
 
 [^4]: Famous quote from [Dieter Rams] which get's called at least once a day by my good friend and colleague [Wouter de Bres].
 
 [follow me]: http://twitter.com/#!/wunki_ "My Twitter account" 
-[@wunki_]: http://twitter.com/#!/wunki_ "My Twitter account"
+[@wunki]: http://twitter.com/#!/wunki "My Twitter account"
 [Dieter Rams]: https://secure.wikimedia.org/wikipedia/en/wiki/Dieter_Rams "Wikipedia article about Dieter Rams"
 [Wouter de Bres]: http://wdeb.nl "Homepage of Wouter de Bres"
 [Twitter]: http://twitter.com/#!/wunki_ "My Twitter account"
