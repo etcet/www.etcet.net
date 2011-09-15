@@ -9,8 +9,8 @@ blockquote, q {quotes:"" "";}
 a img {border:none;}
 
 /* typography */
-body {font-size: 1.2em;color:#32271B;font-family:"Droid Serif",Palatino, "Palatino Linotype",Georgia,"Times New Roman",Times,serif; word-spacing: 0.1em;}
-h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#000;font-family:"Droid Serif",Georgia;margin:0.9em 0 0.3em 0;}
+body {font-size: 1.2em;color:#32271B;font-family:"rooney-web",Palatino, "Palatino Linotype",Georgia,"Times New Roman",Times,serif; word-spacing: 0.1em;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#000;}
 h1 {font-size:2.2em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:1.8em;margin-bottom:0.75em;}
 h3 {font-size:1.4em;line-height:1;margin-bottom:1em;}
@@ -33,7 +33,7 @@ abbr, acronym {border-bottom:1px dotted #666;}
 address {margin:0 0 1.5em;font-style:italic; padding: 0;}
 del {color:#666;}
 pre {margin:0 0 1.5em 0;white-space:pre;}
-pre, code, tt {font-family:"Droid Sans Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Andale Mono","Courier New",monospace;}
+pre, code, tt {font-family:"anonymous-pro","DejaVu Sans Mono","Bitstream Vera Sans Mono","Andale Mono","Courier New",monospace;}
 li ul, li ol {margin:0;}
 ul, ol {margin:0 1.5em 1.5em 0;padding-left:3.333em;}
 ul {list-style-type:disc;}
@@ -147,7 +147,7 @@ ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: color: #333;}
 ol#toc li h2 { margin: 0em; padding: 0; font-size: 1.3em;}
 
 /* Syntax */
-article code { font-size: 0.8em; }
+article code { font-size: 0.7em; }
 article pre { border: 1px solid #efefef; padding: 10px;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
 
 article pre code { background-color: transparent; margin: 0; padding: 0; }
@@ -180,7 +180,7 @@ header.home{
 header.home h1 {
     margin: 0;
     padding: 0;
-    font-family: "Droid Sans", "Menlo", "monospace";
+    font-family: "anonymous-pro", "Menlo", "monospace";
     text-indent: 0.6em;
     width: 175px;
     z-index: 100; /* the stack order: foreground */
@@ -190,6 +190,7 @@ header.home h1 {
 	  -o-box-shadow: 0 0 3px rgba(0,0,0,0.6);
 	  box-shadow: 0 0 3px rgba(0,0,0,0.6);
     text-shadow: 0px -1px 0px #720103;
+    font-size: 40px;
 }
 
 
@@ -259,7 +260,7 @@ span.language {
   border-right: 1px solid #efefef;
   font-size: 0.6em;
   text-align: center;
-  font-family: "Droid Sans", "Menlo", "monospace";
+  font-family: "anonymous-pro", "Menlo", "monospace";
 }
 
 a#toTop { color: #4D4D4D; }
