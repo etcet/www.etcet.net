@@ -11,5 +11,5 @@ jQuery(document).ready(function($) {
 
     // Timeago
     $("time.timeago").timeago();
-		$().UItoTop({ easingType: 'linear' });
+		$().UItoTop({ easingType: 'easeOutQuart' });
 });
