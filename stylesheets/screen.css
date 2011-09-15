@@ -147,7 +147,7 @@ ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: color: #333;}
 ol#toc li h2 { margin: 0em; padding: 0; font-size: 1.3em;}
 
 /* Syntax */
-article code { font-size: 0.7em; }
+article code { font-size: 0.8em; }
 article pre { border: 1px solid #efefef; padding: 10px;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
 
 article pre code { background-color: transparent; margin: 0; padding: 0; }
