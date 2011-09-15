@@ -89,6 +89,9 @@ body {
 p + p { text-indent:2em; margin-top:-1.5em; }
 form p + p { text-indent: 0; } /* Don't want this in forms. */
 
+/* index page */
+#posts h1 { margin-top: 0.5em; }
+
 /* footer */
 footer { border-top: 1px solid #d3d3d3; margin-top: 2em; }
 footer p { padding: 10px 0; font-size: 0.8em; line-height: 1.1em; }
