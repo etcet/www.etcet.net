@@ -62,7 +62,7 @@ main = hakyll $ do
     -- Index
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
-      >>> arr (setField "title" "Wunki - Bits on the web by Petar")
+      >>> arr (setField "title" "Wunki - Bits on the Web by Petar")
       >>> arr (setField "description" description)
       >>> arr (setField "keywords" keywords)
       >>> arr (setField "bodyclass" "default")

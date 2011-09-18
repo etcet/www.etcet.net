@@ -178,12 +178,14 @@ header.home{
     left: 0;
     margin-top: 30px;
     background: url("/images/wunki-label.png") no-repeat;
+    font-family: adelle,serif;
+    font-weight: bold;
 }
 
 header.home h1 {
     margin: 0;
     padding: 0;
-    text-indent: 20px;
+    text-indent: 28px;
     width: 175px;
     z-index: 100; /* the stack order: foreground */
     text-transform: lowercase;
