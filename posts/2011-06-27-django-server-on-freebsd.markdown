@@ -14,7 +14,7 @@ _Note: This guide continues where the previous guide "[Solid FreeBSD Server: The
 [gunicorn]: http://gunicorn.org/
 [supervisor]: http://supervisord.org/
 [nginx]: http://nginx.org/
-[Solid FreeBSD Server: The Foundation]: http://www.wunki.org/guides/2011/04/05/solid-freebsd-server-foundation.html
+[Solid FreeBSD Server: The Foundation]: http://www.wunki.org/posts/2011-04-05-solid-freebsd-server-foundation.html
 
 ## Virtual environment
 
