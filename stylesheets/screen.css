@@ -172,6 +172,7 @@ code.sourceCode span.fu { color: #06287e; }
 code.sourceCode span.re { }
 code.sourceCode span.er { color: red; font-weight: bold; }
 
+/* logo */
 header.home{
     z-index: 90;
     position: fixed;
@@ -185,7 +186,7 @@ header.home{
 header.home h1 {
     margin: 0;
     padding: 0;
-    text-indent: 32px;
+    text-indent: 22px;
     width: 175px;
     z-index: 100; /* the stack order: foreground */
     text-transform: lowercase;
@@ -199,18 +200,15 @@ header.home h1 {
 
 header h1 a {
     height: 75px;
-    line-height: 75px;
     display: block;
     color: #fff;
+    line-height: 80px;
 }
 
 header h1 a:hover {
     color: #ffc7c4;
     text-shadow: 0px -1px 0px #630103;
 }
-
-
-
 
 /* custom pages */
 body.default div.container { padding-top: 5px; }
