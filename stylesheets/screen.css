@@ -185,7 +185,7 @@ header.home{
 header.home h1 {
     margin: 0;
     padding: 0;
-    text-indent: 28px;
+    text-indent: 32px;
     width: 175px;
     z-index: 100; /* the stack order: foreground */
     text-transform: lowercase;
@@ -194,7 +194,7 @@ header.home h1 {
 	  -o-box-shadow: 0 0 3px rgba(0,0,0,0.6);
 	  box-shadow: 0 0 3px rgba(0,0,0,0.6);
     text-shadow: 0px -1px 0px #720103;
-    font-size: 44px;
+    font-size: 36px;
 }
 
 header h1 a {
