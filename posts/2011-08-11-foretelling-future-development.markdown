@@ -63,5 +63,3 @@ There you have it, the tools used in my life as a developer for the coming month
 [Dieter Rams]: https://secure.wikimedia.org/wikipedia/en/wiki/Dieter_Rams "Wikipedia article about Dieter Rams"
 [Wouter de Bres]: http://wdeb.nl "Homepage of Wouter de Bres"
 [Twitter]: http://twitter.com/#!/wunki_ "My Twitter account"
-
-
