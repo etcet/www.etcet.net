@@ -5,11 +5,15 @@ tags: haskell, snugio
 keywords: haskell, snug.io, webmachine, rest, api
 --
 
-Two years ago, I was sitting on the beach of Bol in Croatia, with [Real World Haskell] and a moleskine. I was struggling with Haskell and trying to finish the exercises at the end of every chapter. Although I was challenged by the language, I remember the joy when something clicked. Back at home I stopped learning Haskell, not sure why, guess that my job required me to be productive, and being productive meant going back to programming in Python.
+Summer of 2009, I was sitting on the beach of Bol in Croatia, with [Real World Haskell] book and a Moleskine. I was trying to learn this mysterious language called Haskell, engulfed in the material and trying finish the exercises at the end of every chapter. The language was challenging but still remember the satisfaction when a new part of it *clicked*. Back at home I discontinued learning Haskell because projects at [Bread & Pepper] required me to be productive and this meant going back to Python.
 
 [Real World Haskell]: http://www.amazon.com/dp/0596514980/?tag=wunki-20 
 
-I started to think about Haskell again when I finished a REST API for [Episto][^1] in Clojure. For the first time, I wrote an entire project in a functional programming language and I felt right at home. This rekindled my interest in Haskell and I decided to buy [Learn You a Haskell], as it's often referred to as an easier introduction to the language compared to [Real World Haskell]. Learning a programming language should accompany a project which puts the learned theory into practice. I found an ambitious project and bought the domain name snug.io[^2].
+The memories of this summer came back when I finished a REST API for [Episto][^1] in Clojure. My first project in a functional programming language and it felt like coming home. I think this is because I feel like I'm trying to copy a small part of the universe while programming. My attraction to Mathematics -- BBC does a great job of showing it's beauty in "[The Code]" documentary series -- makes the functional thought process more natural to me than thinking in objects.
+
+[The Code]: http://www.bbc.co.uk/tv/features/code/
+
+This rekindled my interest in Haskell and I decided to order [Learn You a Haskell], as it's mentioned as an gentler introduction to the language compared to [Real World Haskell]. From past experience I know that knowing a programming language can only be achieved by finishing a project which puts the theory in books into code on screen. This would be an ambitious project and it all started when I bought the domain [Snug.io][^2].
 
 [^1]: [Episto] was made during a Hackaton at [Bread & Pepper]. We wanted to build an app where you could send an open letter to any Twitter user. You can read more about it [Episto]. We open-sourced the API, which was written in Clojure at [Github].
 
@@ -17,7 +21,7 @@ I started to think about Haskell again when I finished a REST API for [Episto][^
 [Github]: https://github.com/wunki/episto-api
 [Bread & Pepper]: http://breadandpepper.com
 
-[^2]: If I don't finish this project, It would have cost me € 69,-. ``.io`` is an expensive domain extension! 
+[^2]: If I don't finish this project, I just wasted another € 69,-. The Indian Ocean knows how to turn a profit! 
 
 [Learn You a Haskell]: http://www.amazon.com/dp/1593272839/?tag=wunki-20
 
@@ -60,7 +64,11 @@ I don't know yet what the next hurdle to tackle is, but after writing the routin
 
 ## Conclusion
 
-I don't think finishing [Snug.io] be easy, and it will take me a some time. But writing it should not only be fun, at the end we should have software that is great for creating a REST API which is fast, secure and maintainable. I will write about the process, be it good or bad, so do come back to read about it if your are interested in HTTP, REST or Haskell[^3]. Also, for those experienced in Haskell, please follow along on Github and correct me where I blunder.
+I don't think writing [Snug.io] will be easy, and it will take some time. But the process should be fun and leave us with a tool for creating a REST API which is fast, secure and maintainable. 
+
+> "And available in stores near you!"
+
+I will write about the process, be it good or bad, so do come back to read about it if your are interested in HTTP, REST or Haskell[^3]. Also, for those experienced in Haskell, please follow along on Github and correct me when I blunder.
 
 [^3]: How couldn't you be interested, this sentence alone contains three buzzwords.
 
