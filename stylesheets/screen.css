@@ -95,7 +95,7 @@ form p + p { text-indent: 0; } /* Don't want this in forms. */
 /* footer */
 footer { border-top: 1px solid #d3d3d3; margin-top: 2em; }
 footer p { padding: 10px 0; font-size: 0.8em; line-height: 1.1em; color: #d4d4d4;}
-footer p a { color: #d4d4d4; }
+footer p a { color: #555; }
 
 /* article */
 article { margin-bottom: 1em; }
@@ -148,7 +148,7 @@ nav h1 { text-align: center; }
 ol#toc { padding: 0;}
 ol#toc li { list-style-type: none; }
 ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: color: #333;}
-ol#toc li h2 { margin: 0em; padding: 0; font-size: 1.3em;}
+ol#toc li h2 { margin: 0; padding: 0; font-size: 1.3em; line-height: 1.2em;}
 
 /* Syntax */
 article code { font-size: 0.8em; }
