@@ -11,5 +11,12 @@ jQuery(document).ready(function($) {
 
     // Timeago
     $("time.timeago").timeago();
-		$().UItoTop({ easingType: 'easeOutQuart' });
+		$().UItoTop({ easingType: 'easeOutExpo' });
+
+    // Scroll to anchors
+    $("a").each(function(idx) {
+      if ($(this).attr('href').match(/^#/)) {
+        $(this).anchorScroll({fx: 'easeOutExpo'});
+      }
+    }); 
 });
