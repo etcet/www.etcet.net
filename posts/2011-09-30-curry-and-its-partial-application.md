@@ -63,10 +63,22 @@ sumTwo x = \y -> x + y
 sumTwo 2 = \y -> 2 + y
 
 -- And an y of 3.
-sumTwo 2 = \3 -> 2 + 3
+sumTwo 2 = (\y -> 2 + y) 3
 ~~~
 
-And let's try it with a function that multiplies three numbers, thus taking three parameters.
+I hope you could follow along with the transformation above, just remember that the following functions are all identical.
+
+~~~ {.haskell}
+sumTwo x y = x + y
+
+-- Add one anonymous function
+sumTwo = \x y -> x + y
+
+-- Two anonymous functions.
+sumTwo = \x -> \y -> x + y
+~~~
+
+Let's do the same with a function that multiplies three numbers, thus taking three parameters.
 
 ~~~ {.haskell}
 multThree :: Int -> Int -> Int ->
@@ -92,10 +104,13 @@ multThree x = \y -> \z -> x * y * z
 multThree 5 = \y -> \z -> 5 * y * z
 
 -- An y of 7
-multThree 5 = \7 -> \z -> 5 * 7 * z
+multThree 5 = (\y -> \z -> 5 * y * z) 7
+multThree 5 7 = \z -> 5 * 7 * z
 
 -- And finally a z of 11
-multThree 5 = \7 -> \11 -> 5 * 7 * 11
+multThree 5 = (\y -> (\z -> 5 * y * z) 11) 7
+multThree 5 7 = (\z -> 5 * 7 * z) 11
+multThree 5 7 11 = 5 * 7 * 11
 ~~~
 
 The above actually states that the ``multThree 5`` expression is is a function which takes one parameter, and returns a function which takes one parameter. By removing one λ, you could write it as such:
@@ -104,10 +119,10 @@ The above actually states that the ``multThree 5`` expression is is a function w
 multThree 5 y = \z -> 5 * y * z
 ~~~
 
-And the expression ``multThree 5 7 y`` is a function which takes one ``Int`` and returns that in multiplied 35 times.
+And the expression ``multThree 5 7 y`` is a function which takes one ``Int`` and returns that in multiplied 35 (5 x 7) times.
 
 ~~~ {.haskell}
-multThree 5 7 y = 35 * y
+multThree 5 7 y = 5 * 7 * y
 ~~~
 
 I hope that at this point you understand what currying is because we are now going to put it to use.
