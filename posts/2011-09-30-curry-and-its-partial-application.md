@@ -1,7 +1,7 @@
 --
 title: Curry and it's Partial Application
 tags: haskell, currying
-keywords: haskell, currying, partial function application
+keywords: haskell, currying, partial function application, lambda, anonymous functions, learn you a haskell for great good
 --
 
 I'm reading through the excellent [Learn You a Haskell for Great Good] book and arrived at the explanation of currying. After reading it carefully, I wasn't sure that I got it. Turned out, I didn't. At least not untill I finished writing the following post, trying to explain it to you. I'll start with a part of the theory behind currying, followed by using this theory in _partial function_ applications.
