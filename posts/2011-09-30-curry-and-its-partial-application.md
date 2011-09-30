@@ -1,5 +1,6 @@
 --
 title: Curry and it's Partial Application
+description: An explanation of Currying and it's use in using partial function application.
 tags: haskell, currying
 keywords: haskell, currying, partial function application, lambda, anonymous functions, learn you a haskell for great good
 --
