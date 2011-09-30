@@ -38,13 +38,13 @@ Lambda's are anonymous functions -- You won't find these on [Facebook] -- and ar
 \x y -> x + y
 
 -- You could also test this function in GHCI by supplying it
--- with values. This would return 5.
-(\x y -> x + y) 2 3
+-- with values. This would return 12.
+(\x y -> x + y) 5 7
 ~~~
 
 [Facebook]: http://adrianshort.co.uk/2011/09/25/its-the-end-of-the-web-as-we-know-it/
 
-Don't confuse this code with a _function type_ because it contains an arrow. This is the same function as ``sumTwo``, but this time in anonymous form. In the second declaration, we first define a anonymous function and immediately after supply it's arguments, try it out in GHCI and you will get a five. Knowing how lambda functions look, let's proceed to the transformation of multiple parameter functions.
+Important to note is that you supply arguments to a anonymous function by seperating them by spaces after the closing parenthesis. In the above function, the ``x`` get's a value of 5 and ``y`` of 7. Also do not confuse the above with a _function type_ because it contains an arrow. This is the same function as ``sumTwo``, but now in anonymous form. This knowledge about anonymous functions is enough to follow along on the transformation of multiple parameter functions.
 
 ## The transformation
 
