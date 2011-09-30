@@ -86,7 +86,7 @@ sumTwo = \x -> \y -> x + y
 Let's try the same with a function that multiplies three numbers, thus taking three parameters.
 
 ~~~ {.haskell}
-multThree :: Int -> Int -> Int ->
+multThree :: Int -> Int -> Int -> Int
 multThree x y z = x * y * z
 ~~~
 
