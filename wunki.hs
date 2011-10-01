@@ -130,6 +130,8 @@ makeTagList tag posts =
     constA (mempty, posts)
         >>> addPostList
         >>> arr (setField "title" ("Posts tagged with &#8216;" ++ tag ++ "&#8217;"))
+        >>> arr (setField "description" ("View all posts tagged with " ++ tag))
+        >>> arr (setField "keywords" ("wunki, tags, " ++ tag))
         >>> arr (setField "bodyclass" "postlist")
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
