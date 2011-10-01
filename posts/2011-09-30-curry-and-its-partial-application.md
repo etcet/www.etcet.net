@@ -15,7 +15,7 @@ I'm reading through the excellent [Learn You a Haskell for Great Good] book and 
 ### Parameters or Arguments?
 
 Tomato, tomato? Not really, there is a difference between parameters and arguments. Follow this simple rule: **Parameters** are defined in the function's definition and **arguments** are the values which are passed on function calls. </section>
-Curried functions are functions that only take one parameter. However, this doesn't stop languages with it from having functions with multiple parameters. Every time a function with multiple parameters is called, that function is transformed to chained, single parameter functions. Let me show you with a simple function that returns the sum of two numbers.
+Currying is the transformation of functions with multiple parameters into functions that only take one parameter. Every time a function with multiple parameters is called, that function is changed into chained, single parameter, functions. Let's start with an example of a function that returns the sum of two numbers.
 
 ~~~ {.haskell}
 sumTwo :: Int -> Int -> Int
