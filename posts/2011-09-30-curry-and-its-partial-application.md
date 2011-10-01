@@ -9,7 +9,7 @@ I'm reading through the excellent [Learn You a Haskell for Great Good] book and 
 
 [Learn You a Haskell for Great Good]: http://www.amazon.com/dp/1593272839/?tag=wunki-20
 
-## Functions with Multiple Arguments
+## Functions with Multiple Parameters
 <section class="information">
 
 ### Parameters or Arguments?
