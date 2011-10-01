@@ -37,6 +37,11 @@ main = hakyll $ do
     match "patches/*" $ do
       route   idRoute
       compile copyFileCompiler
+
+    -- Copy robots.txt
+    match "robots.txt" $ do
+      route   idRoute
+      compile copyFileCompiler
           
     -- Render posts
     match "posts/*" $ do
