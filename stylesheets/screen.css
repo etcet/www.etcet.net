@@ -93,8 +93,8 @@ form p + p { text-indent: 0; } /* Don't want this in forms. */
 #posts h1 { margin-top: 0.5em; }
 
 /* footer */
-footer { border-top: 1px solid #d3d3d3; margin-top: 2em; }
-footer p { padding: 10px 0; font-size: 0.8em; line-height: 1.1em; color: #d4d4d4;}
+footer { border-top: 1px solid #aaa; margin-top: 1em; }
+footer p { padding: 1em 0; font-size: 0.8em; line-height: 1.1em; color: #d4d4d4;}
 footer p a { color: #555; }
 
 /* article */
@@ -119,11 +119,19 @@ article section.information pre {
     background-color: none;
 }
 
+article section#comment {
+  color: #4d4d4d;
+  border-top: 1px solid #AAA;
+  font-style: italic;
+  font-size: 0.9em;
+  padding-top: 1em;
+}
+
 .footnotes hr {
     display: block;
+    margin: 16px auto;
     position: relative;
     padding: 0;
-    margin: 8px auto;
     width: 100%;
     clear: both;
     border: none;

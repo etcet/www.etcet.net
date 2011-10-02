@@ -37,6 +37,11 @@ main = hakyll $ do
     match "patches/*" $ do
       route   idRoute
       compile copyFileCompiler
+
+    -- Copy robots.txt
+    match "robots.txt" $ do
+      route   idRoute
+      compile copyFileCompiler
           
     -- Render posts
     match "posts/*" $ do
@@ -125,6 +130,8 @@ makeTagList tag posts =
     constA (mempty, posts)
         >>> addPostList
         >>> arr (setField "title" ("Posts tagged with &#8216;" ++ tag ++ "&#8217;"))
+        >>> arr (setField "description" ("View all posts tagged with " ++ tag))
+        >>> arr (setField "keywords" ("wunki, tags, " ++ tag))
         >>> arr (setField "bodyclass" "postlist")
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"

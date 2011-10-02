@@ -45,7 +45,7 @@ Lambda's are anonymous functions -- You won't find these on [Facebook] -- and ar
 
 [Facebook]: http://adrianshort.co.uk/2011/09/25/its-the-end-of-the-web-as-we-know-it/
 
-Important to note is that you supply arguments to an anonymous function by seperating them by spaces after the closing parenthesis. In the above function, the ``x`` get's a value of 5 and ``y`` of 7. Also do not confuse the above with a _function type_ because it contains an arrow. This is the same function as ``sumTwo``, but now in anonymous form. This knowledge about anonymous functions is enough to follow along on the transformation of multiple parameter functions.
+Important to note is that you supply arguments to an anonymous function by seperating them by spaces after the closing parenthesis. In the above function, the ``x`` get's a value of 5 and ``y`` of 7. Also do not confuse the above with a _function type_ because it contains an ``->``. This is the same function as ``sumTwo``, but now in anonymous form. This knowledge about anonymous functions is enough to follow along on the transformation of multiple parameter functions.
 
 ## The transformation
 
