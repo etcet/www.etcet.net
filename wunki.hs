@@ -115,8 +115,8 @@ main = hakyllWith config $ do
     tagIdentifier = fromCapture "tags/*"
     
       -- Common variables
-    description = "Wunki is a few bits on the web placed there by Petar Radosevic. A place with ramblings about programming, server setups and personal experiences. You can either find the posts a few pixels down or read more about me."
-    keywords = "petar, radosevic, wunki, clojure, python, haskell, freebsd, django, api"
+    description = "A person's progression in the world of programming. Watch me how I stagger on the never-ending road to digital mastery."
+    keywords = "petar, radosevic, wunki, bread and pepper, programming, haskell, freebsd, rest"
 
 -- | Auxiliary compiler: generate a post list from a list of given posts, and
 -- add it to the current page under @$posts@
