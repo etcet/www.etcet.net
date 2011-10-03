@@ -22,6 +22,11 @@ main = hakyllWith config $ do
     match "images/*" $ do
       route   idRoute
       compile copyFileCompiler
+
+    -- Copy post images
+    match "images/posts/*" $ do
+      route   idRoute
+      compile copyFileCompiler
     
     -- Copy javascripts
     match "javascripts/*" $ do

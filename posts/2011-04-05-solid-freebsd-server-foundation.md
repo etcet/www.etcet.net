@@ -5,7 +5,7 @@ tags: freebsd, server, guide
 keywords: freebsd, server, basic, security, setup, ec2, brightbox
 ---
 
-![FreeBSD Logo](/images/posts/freebsd-logo.png "FreeBSD Logo")
+![FreeBSD Logo](/images/posts/2011-04-05-freebsd-logo.png "FreeBSD Logo")
 
 FreeBSD, the high quality, free, operating system is now available as VPS on [Amazon EC2] (thanks [Colin Percival]) and on [Brightbox]. That should be enough reasons for server enthusiasts to give it a spin. In the following guide I will describe how to build a solid foundation on which to further develop your web- or database-server. I covers things as updating your system, adding administrator users and securing your system. Within no-time you will have a solid, secure server.
 
