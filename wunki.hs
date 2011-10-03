@@ -11,7 +11,7 @@ import Text.Pandoc (WriterOptions(..), defaultWriterOptions)
 import Hakyll
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
   
     -- Compress CSS
     match "stylesheets/*" $ do
@@ -95,7 +95,7 @@ main = hakyll $ do
     match "templates/*" $ compile templateCompiler
     
         -- Render some static pages
-    forM_ ["about.markdown", "404.markdown"] $ \p ->
+    forM_ ["about.md", "404.md"] $ \p ->
         match p $ do
             route $ setExtension ".html"
             compile $ wunkiCompiler
@@ -151,7 +151,9 @@ wunkiWriterOptions = defaultHakyllWriterOptions
 
 config :: HakyllConfiguration
 config = defaultHakyllConfiguration
-    { deployCommand = "rsync --checksum -ave _site/* /Volumes/wunki-blog/wunki" }
+  { deployCommand = "rsync --checksum -ave 'ssh -p 22000' \
+                     \_site/* wunki@141.138.137.36:/usr/local/www/wunki"
+  }
     
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
