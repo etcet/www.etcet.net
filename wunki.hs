@@ -147,6 +147,7 @@ wunkiWriterOptions :: WriterOptions
 wunkiWriterOptions = defaultHakyllWriterOptions
   { writerHtml5 = True
   , writerTableOfContents = True
+  , writerLiterateHaskell = False
   }
 
 config :: HakyllConfiguration
