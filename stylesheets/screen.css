@@ -147,7 +147,7 @@ section#page img { float: left; margin-left: 1.5em; text-align: center; }
 section#page h1 { margin: 0em 0 1em 0; }
 
 /* about me */
-div.about { border-bottom: 1px solid #d3d3d3; border-top: 1px solid #d3d3d3; padding: 1.2em 0 0 0; }
+div.about { border-bottom: 1px solid #d3d3d3; border-top: 1px solid #d3d3d3; padding: 1.2em 0 0 0; text-align: center; }
 div.container img { border: 1px solid #4d4d4d; }
 div.container figcaption { font-size: 0.9em; font-style: italic; }
 
