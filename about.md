@@ -19,9 +19,9 @@ Another part of my life evolves around [Bread and Pepper]. A company [Wouter], [
 
 ## Sofware
 
-Most of the tools I use are open source and I love the open culture of software development. Take a look at my [Github page] to find [django-userena] -- an account management application for [Django] --, [dotfiles] and some random bytes.
+Most of the tools I use are open source and I love the open culture of software development. Take a look at my [Github page] to find [django-userena], an account management application for [Django], my [dotfiles] and some random bytes.
 
-My current editor is [Vim], terminal of choice is the new [iTerm2] terminal. [1Password] that generates a random password for every service that I use. [Chrome] and [Safari] for browsing the web and [Things] to manage my todo's. Most of the day I'm listening to [Di.fm] or [Somafm] radio.
+My current editor is [Vim], terminal of choice is the new [iTerm2] terminal. [1Password] that generates a random password for every service that I use. [Safari] for browsing the web and [Things] to manage my tasks. Most of the day I'm listening to [Di.fm] or [Somafm] radio.
 
 [Django]: http://djangoproject.com "Django's homepage"
 [Github page]: https://github.com/wunki "Wunki's Github page"
@@ -30,7 +30,6 @@ My current editor is [Vim], terminal of choice is the new [iTerm2] terminal. [1P
 [Vim]: http://www.vim.org "Vim homepage"
 [iTerm2]: http://sites.google.com/site/iterm2home/ "Iterm2 Homepage"
 [1Password]: http://agilewebsolutions.com/onepassword "1Password homepage"
-[Chrome]: http://www.google.com/chrome "Chrome's homepage"
 [Safari]: http://www.apple.com/safari/
 [Things]: http://culturedcode.com "CulturedCode homepage"
 [Di.fm]: http://di.fm "Digitally Imported homepage"
