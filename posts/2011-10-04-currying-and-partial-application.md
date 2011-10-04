@@ -5,15 +5,21 @@ tags: currying, haskell
 keywords: currying, haskell, partial application, prefix, infix, curry
 ---
 
-A few days ago I wrote a post with the same subject as this one. I was proud of the result and decided to post it on [Reddit] so others could learn from my thorough understanding of the matter. Boy, was I wrong. Turns out that very little in that post actually had anything to to with currying.
+A few days ago I wrote a post with the same subject as this one. Being proud of the result I decided to post it on [Reddit] so others could learn from my thorough understanding on the subject. Boy, was I wrong.
 
 [Reddit]: http://www.reddit.com/r/haskell/comments/kxdh7/curry_and_its_partial_application/
 
-Luckily, the Haskell community is one of teachers and I received valuable feedback about the correct meaning of currying. Although I needed some time to recover from my initial failure, it would be foolish to leave it at that. So, with all the feedback printed out and annotated, here is my second try in explaining _currying_ and _partial function_ application.
+Luckily, the Haskell community is one of teachers and I received valuable feedback about the correct meaning of currying. Although I needed some time to recover from my initial failure, it would be foolish to leave it at that. So, with all the feedback printed and annotated, here goes my second try at explaining _currying_ and _partial function_ application.
 
 ## What is currying?
 
-Currying is a technique which transforms a function that takes a tuple into a chained function which each take only one parameter. Let's start with two functions, ``foo`` being the uncurried version of ``bar``.
+Currying is a technique which transforms a function that takes a tuple into chained functions which each take one parameter. This is shown in the type declarion of the ``curry`` function:
+
+~~~ {.haskell}
+curry :: ((a, b) -> c) -> a -> b -> c
+~~~
+
+When applying ``curry`` to the function ``foo``, we get a function which is the same as ``bar``.
 
 ~~~ {.haskell}
 foo :: (Int, Int) -> Int
@@ -23,18 +29,18 @@ bar :: Int -> Int -> Int
 bar a = \b -> a * b
 ~~~
 
-The reason we call ``foo`` uncurried, is because it takes a single tuple as argument and returns the value. This is also shown because of one ``->`` in the type declaration. One the left side of the arrow we see a single argument, consisting of multiple components.
+The reason we call ``foo`` uncurried, is because it takes a single tuple as argument and returns the value. Also visible because of the single ``->`` in the type declaration. Left of this is the single argument, consisting of multiple components.
 
 ``bar`` is the curried form of ``foo`` because it takes the first element of the pair in ``foo`` and returns a function which takes the second element of the pair, and finally gives you back the same value that you would get using ``foo``. The function ``bar`` is thus transformed into a function which accepts a single parameter and returns a function which again, accepts a single parameter.
 
-Although it may seem that the following function is an uncurried function, this is not the case because it's only different in syntax from the function ``bar`` above:
+Although it may seem that the following function is uncurried, this is not the case because it's only different in syntax from the function ``bar`` above:
 
 ~~~ {.haskell}
 baz :: Int -> Int -> Int
 baz a b = a * b
 ~~~
 
-First clue is found in the type declaration. You can see it has the same type declaration as ``bar``. But not only is the type declaration the same, follow along to see that they both return the same values:
+You can see it has the same type declaration as ``bar``. But not only is the type declaration the same, follow along to see that they both return the same values:
 
 ~~~ {.haskell} 
 -- Our new function
