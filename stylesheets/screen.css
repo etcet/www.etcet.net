@@ -24,7 +24,7 @@ p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
 a:focus, a:hover {color:#000;}
 a {color:#005C99;text-decoration:none;}
 a:hover {text-decoration: none;}
-blockquote {margin:1.5em;color:#7d7d7d;font-style:italic;border-left:3px solid #7d7d7d;padding-left:1em;}
+blockquote {padding-left:2em;}
 strong {font-weight:bold;}
 em, dfn {font-style:italic;}
 dfn {font-weight:bold;}
@@ -108,6 +108,7 @@ article sup a { color: #000; border-bottom: none; font-size: 0.8em; margin: 0; p
 article sup a:hover { background-color: #fff; color: #000; border-bottom: none; }
 article figure { float: right; margin: 0 2em 1em 2em; }
 article dl { margin-left: 1em; }
+article blockquote { font-style: italic; }
 article section.information { margin: 0 0 1em 2em; border: 1px solid #efefef; float: right; width: 18em; color: #666; }
 article section.information p { padding: 1em; margin: 0; }
 article section.information h3 { background-color: #f4f4f4; margin: 0; padding: 0.7em; border-bottom: 1px solid #e5e5e5; }
