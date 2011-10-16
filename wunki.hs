@@ -98,9 +98,16 @@ main = hakyllWith config $ do
             
     -- Read templates
     match "templates/*" $ compile templateCompiler
-    
-        -- Render some static pages
-    forM_ ["about.md", "404.md"] $ \p ->
+
+    -- Render pages witouth relative url's
+    forM_ ["404.md"] $ \p ->
+        match p $ do
+            route $ setExtension ".html"
+            compile $ wunkiCompiler
+                >>> applyTemplateCompiler "templates/default.html"
+
+    -- Render pages with relative url's
+    forM_ ["about.md"] $ \p ->
         match p $ do
             route $ setExtension ".html"
             compile $ wunkiCompiler
