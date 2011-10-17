@@ -24,7 +24,7 @@ p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
 a:focus, a:hover {color:#000;}
 a {color:#005C99;text-decoration:none;}
 a:hover {text-decoration: none;}
-blockquote {padding-left:2em;}
+blockquote {padding: 0 2em;}
 strong {font-weight:bold;}
 em, dfn {font-style:italic;}
 dfn {font-weight:bold;}
