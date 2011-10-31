@@ -131,7 +131,10 @@ makeTagList tag posts =
     constA posts
         >>> pageListCompiler recentFirst "templates/postitem.html"
         >>> arr (copyBodyToField "posts" . fromBody)
-        >>> arr (setField "title" ("Posts tagged " ++ tag))
+        >>> arr (setField "title" $ "Posts tagged " ++ tag)
+        >>> arr (setField "description" $ "View all posts tagged with " ++ tag)
+        >>> arr (setField "keywords" $ "wunki, tags, " ++ tag)
+        >>> arr (setField "bodyclass" "postlist")
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
 
