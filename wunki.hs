@@ -57,30 +57,29 @@ main = hakyllWith config $ do
         >>> renderTagsField "prettytags" (fromCapture "tags/*")
         >>> applyTemplateCompiler "templates/post.html"
         >>> applyTemplateCompiler "templates/default.html"
-        >>> relativizeUrlsCompiler
 
-    -- Render posts list
+    -- Post list
     match "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
-      >>> arr (setField "title" "All posts")
-      >>> arr (setField "bodyclass" "postlist")
-      >>> requireAllA "posts/*" addPostList
-      >>> applyTemplateCompiler "templates/posts.html"
-      >>> applyTemplateCompiler "templates/default.html"
-      >>> relativizeUrlsCompiler
+        >>> arr (setField "title" "Posts")
+        >>> arr (setField "bodyclass" "postlist")
+        >>> setFieldPageList recentFirst
+                "templates/postitem.html" "posts" "posts/*"
+        >>> applyTemplateCompiler "templates/posts.html"
+        >>> applyTemplateCompiler "templates/default.html"
 
     -- Index
     match "index.html" $ route idRoute
     create "index.html" $ constA mempty
-      >>> arr (setField "title" "A Few Bytes from Petar")
-      >>> arr (setField "description" description)
-      >>> arr (setField "keywords" keywords)
-      >>> arr (setField "bodyclass" "default")
-      >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
-      >>> requireAllA "posts/*" (id *** arr (take 10 . reverse . sortByBaseName) >>> addPostList)
-      >>> applyTemplateCompiler "templates/index.html"
-      >>> applyTemplateCompiler "templates/default.html"
-      >>> relativizeUrlsCompiler
+        >>> arr (setField "title" "A Few Bytes from Petar")
+        >>> arr (setField "description" description)
+        >>> arr (setField "keywords" keywords)
+        >>> arr (setField "bodyclass" "default")
+        >>> requireA "tags" (setFieldA "tags" (renderTagList'))
+        >>> setFieldPageList (take 15 . recentFirst)
+                "templates/postitem.html" "posts" "posts/*"
+        >>> applyTemplateCompiler "templates/index.html"
+        >>> applyTemplateCompiler "templates/default.html"
 
     -- Tags
     create "tags" $
@@ -115,36 +114,24 @@ main = hakyllWith config $ do
                 >>> relativizeUrlsCompiler
 
   where
-    renderTagCloud' :: Compiler (Tags String) String
-    renderTagCloud' = renderTagCloud tagIdentifier 100 120
+      renderTagList' :: Compiler (Tags String) String
+      renderTagList' = renderTagList tagIdentifier
 
-    tagIdentifier :: String -> Identifier (Page String)
-    tagIdentifier = fromCapture "tags/*"
+      tagIdentifier :: String -> Identifier (Page String)
+      tagIdentifier = fromCapture "tags/*"
     
       -- Common variables
-    description = "A person's progression in the world of programming. Watch me how I stagger on the never-ending road to digital mastery."
-    keywords = "petar, radosevic, wunki, bread and pepper, programming, haskell, freebsd, rest"
-
--- | Auxiliary compiler: generate a post list from a list of given posts, and
--- add it to the current page under @$posts@
---
-addPostList :: Compiler (Page String, [Page String]) (Page String)
-addPostList = setFieldA "posts" $
-    arr (reverse . sortByBaseName)
-        >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
-        >>> arr mconcat
-        >>> arr pageBody
+      description = "A person's progression in the world of programming. Watch me how I stagger on the never-ending road to digital mastery."
+      keywords = "petar, radosevic, wunki, bread and pepper, programming, haskell, freebsd, rest"
 
 makeTagList :: String
             -> [Page String]
             -> Compiler () (Page String)
 makeTagList tag posts =
-    constA (mempty, posts)
-        >>> addPostList
-        >>> arr (setField "title" ("Posts tagged with &#8216;" ++ tag ++ "&#8217;"))
-        >>> arr (setField "description" ("View all posts tagged with " ++ tag))
-        >>> arr (setField "keywords" ("wunki, tags, " ++ tag))
-        >>> arr (setField "bodyclass" "postlist")
+    constA posts
+        >>> pageListCompiler recentFirst "templates/postitem.html"
+        >>> arr (copyBodyToField "posts" . fromBody)
+        >>> arr (setField "title" ("Posts tagged " ++ tag))
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
 
