@@ -1,8 +1,8 @@
 --
-title: Learning Haskell by Building Snug.io
-description: How I'm going to learn Haskell by copying webmachine to Haskell and calling it snug.io.
+title: Learning Haskell by Building Snugio
+description: How I'm going to learn Haskell by copying webmachine to Haskell and calling it snugio.
 tags: haskell, snugio
-keywords: haskell, snug.io, webmachine, rest, api
+keywords: haskell, snugio, webmachine, rest, api
 --
 
 Summer of 2009, I was sitting on the beach of Bol in Croatia, with
@@ -26,7 +26,7 @@ This rekindled my interest in Haskell and I decided to order
 language compared to [Real World Haskell]. From past experience I know that
 knowing a programming language can only be achieved by finishing a project
 which puts the theory in books into code on screen. This would be an ambitious
-project and it all started when I bought the domain [Snug.io][^2].
+project and it all started when I bought the domain [Snugio][^2].
 
 [^1]: [Episto] was made during a Hackaton at [Bread & Pepper]. We wanted to
 build an app where you could send an open letter to any Twitter user. You can
@@ -36,9 +36,9 @@ Clojure at [Github].
 [^2]: If I don't finish this project, I just wasted another € 69,-. The Indian
 Ocean knows how to turn a profit!
 
-## What's Snug.io?
+## What's Snugio?
 
-In short, [Snug.io] is a port of [webmachine] in Haskell. I was convinced of
+In short, [Snugio] is a port of [webmachine] in Haskell. I was convinced of
 the brilliance of webmachine when I saw the [Webmachine - Focus on Resources]
 talk. It matched my idea of what current web development is about. Namely
 creating an API first and connect to that API with a front-end later. This
@@ -69,7 +69,7 @@ get me up and running again.
 First thing on my list is finishing [Learn You a Haskell]. This supply the
 basic knowledge of Haskell needed to understand the code in [Snap], [Warp] and
 [Yesod], projects that should give me a steady supply of nuggets to use in
-[Snug.io]. I'll start by writing the routing layer for the [Warp]
+[Snugio]. I'll start by writing the routing layer for the [Warp]
 web-server. The routing layer should look at the incoming URI and parse
 it. According to the parsed information, the server should dispatch the
 request to the correct resource and function. You can find a better
@@ -85,7 +85,7 @@ then.
 
 ## Conclusion
 
-I don't think writing [Snug.io] will be easy, and it will take some time. But
+I don't think writing [Snugio] will be easy, and it will take some time. But
 the process should be fun and leave us with a tool for creating a REST API
 which is fast, secure and maintainable.
 
@@ -104,7 +104,7 @@ blunder.
 [Github]: https://github.com/wunki/episto-api
 [Bread & Pepper]: http://breadandpepper.com
 [Learn You a Haskell]: http://www.amazon.com/dp/1593272839/?tag=wunki-20
-[Snug.io]: http://www.snug.io
+[Snugio]: http://www.snug.io
 [webmachine]: http://webmachine.basho.com/
 [Webmachine - Focus on Resources]: http://vimeo.com/20784244
 [Backbone.js]: http://documentcloud.github.com/backbone/
