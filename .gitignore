@@ -2,5 +2,4 @@
 *.o
 wunki
 _*
-drafts/*
 .hsenv
