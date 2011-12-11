@@ -156,17 +156,43 @@ nav h1 { text-align: center; }
 ol#toc { padding: 0;}
 ol#toc li { list-style-type: none; }
 ol#toc li p { margin-bottom: 1em; font-size: 0.9em; font-style: color: #333;}
-ol#toc li h2 { margin: 0; padding: 0; font-size: 1.3em; line-height: 1.2em;}
+ol#toc li h2 { margin: 0; padding: 0; font-size: 1.3em; line-height: 1em;}
 
-/* Syntax */
-article code { font-size: 0.8em; }
-article pre { border: 1px solid #efefef; padding: 10px;  background-color: #fbfbfb; overflow: auto; margin: 1em 0; line-height: 1em; }
+/* Code */
+table.sourceCode,
+section > pre {
+    overflow: auto;
+    margin: 1em 0;
+    line-height: 1em; 
+    font-size: 0.8em;
+}
 
-article pre code { background-color: transparent; margin: 0; padding: 0; }
-table.sourceCode { border: 1px solid #efefef;}
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; vertical-align: baseline; }
-td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding: 0 5px 0 5px; }
-td.sourceCode { padding-left: 5px; }
+/* Language note */
+span.language {
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    border-right: none;
+    float: right;
+    text-align: right;
+    margin: -7px;
+    padding: 0.5em 1em;
+    background-color: #fff;
+    color: #999;
+    font-size: 12px;
+}
+
+/* With linenumbers */
+table.sourceCode { border: 1px solid #e5e5e5; }
+table.sourceCode td.lineNumbers { border-right: 1px solid #e5e5e5; text-align: right; color: #999; padding: 0 5px 0 7px; background-color: #f4f4f4; }
+table.sourceCode span.language { background-color: #f4f4f4; }
+table.sourceCode td.lineNumbers pre { padding: 0; margin: 0; }
+table.sourceCode td.sourceCode { margin: 0; padding: 0; background-color: #fff; }
+table.sourceCode td.sourceCode pre { padding: 7px; margin: 0; }
+
+/* Without linenumbers */
+section > pre { border: 1px solid #e5e5e5; padding: 7px; background-color: #f4f4f4; }
+
+/* Markup */
 code.sourceCode span.kw { color: #007020; font-weight: bold; }
 code.sourceCode span.dt { color: #902000; }
 code.sourceCode span.dv { color: #40a070; }
@@ -239,19 +265,6 @@ body.postlist li p { font-size: 0.9em; }
 /* 404 */
 body.notfound div.container { padding-top: 0.1em; }
 body.notfound div.container h1 a { color: #000; }
-
-span.language { 
-    border: 1px solid #efefef;
-    border-top: none;
-    border-right: none;
-    float: right;
-    margin: -10px;
-    text-align: right;
-    padding: 0.5em 1em;
-    font-size: 0.4em;
-    background-color: #fff;
-    color: #999;
-}
 
 #toTop {
 	display: none;
