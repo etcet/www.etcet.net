@@ -37,7 +37,7 @@ import Network.HTTP.Types
 import Network.Wai.Handler.Warp (run)
 import Data.ByteString.Lazy.Char8 () -- Just for an orphan instance
 
-app :: Application
+app :: Application => Request -> Response
 app req = return $ responseLBS
     status200
     [("Content-Type", "text/plain")]
@@ -47,6 +47,30 @@ main :: IO ()
 main = do
     putStrLn $ "http://localhost:8080/"
     run 8080 app
+~~~
+
+First five lines can be disregarded for now, they are simple imports to build
+the application with. In line 7 we simple state that the function ``app``
+takes a ``req`` and returns an ``Application``. 
+
+This is defined as follows:
+
+### Application
+but Iteratee is a type constructor which takes three parameters
+
+~~~ {.haskell .numberLines}
+type Application = Request -> Iteratee B.ByteString IO Response
+~~~
+
+### ResponseLBS
+~~~ {.haskell .numberLines}
+responseLBS :: H.Status -> H.ResponseHeaders -> L.ByteString -> Response
+responseLBS s h = ResponseBuilder s h . fromLazyByteString
+~~~ 
+
+### Run
+~~~ {.haskell }
+run :: Port -> Application -> IO ()
 ~~~
 
 ## Middleware
