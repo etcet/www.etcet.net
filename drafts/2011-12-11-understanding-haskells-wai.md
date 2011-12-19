@@ -37,7 +37,7 @@ import Network.HTTP.Types
 import Network.Wai.Handler.Warp (run)
 import Data.ByteString.Lazy.Char8 () -- Just for an orphan instance
 
-app :: Application => Request -> Response
+app :: Application
 app req = return $ responseLBS
     status200
     [("Content-Type", "text/plain")]
@@ -50,10 +50,32 @@ main = do
 ~~~
 
 First five lines can be disregarded for now, they are simple imports to build
-the application with. In line 7 we simple state that the function ``app``
-takes a ``req`` and returns an ``Application``. 
+the application with. In line 7 we see the function ``app`` which takes a
+``Request`` and returns an ``Response``. Those are defined as follows:
 
-This is defined as follows:
+~~~ {.haskell}
+data Request = Request
+  { requestMethod :: H.Method
+  , httpVersion :: H.HttpVersion
+  , rawPathInfo :: B.ByteString
+  , rawQueryString :: B.ByteString
+  , serverName :: B.ByteString
+  , serverPort :: Int
+  , requestHeaders :: H.RequestHeaders
+  , isSecure :: Bool
+  , remoteHost :: SockAddr
+  , pathInfo :: [Text]
+  , queryString :: H.Query
+  }
+  deriving (Show, Typeable)
+
+data Response
+    = ResponseFile H.Status H.ResponseHeaders FilePath (Maybe FilePart)
+    | ResponseBuilder H.Status H.ResponseHeaders Builder
+    | ResponseEnumerator (forall a. ResponseEnumerator a)
+  deriving Typeable
+~~~
+
 
 ### Application
 but Iteratee is a type constructor which takes three parameters
