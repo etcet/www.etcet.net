@@ -123,7 +123,6 @@ control, packages for convenience.
 
 </section>
 
-
 Ports are a set of Makefiles, patches and descriptions that will build and
 install a package optimized for FreeBSD. Run the following two commands as
 root:
@@ -211,16 +210,25 @@ hostname above.
 ## Unicode
 
 Unicode enables your system to handle non-ASCII characters like "š" and
-"☃". Add the following two lines to your ``/etc login.conf``, inside the
-default block at the top. Don't forget to remove the backslash after
-``:umask:022``.
+"☃". We will add an English login class which uses unicode. Edit `/etc/make.conf`
+and add the following after the Russian class.
 
-    :charset=UTF-8:\
-    :lang=en_US.UTF-8:
+    english|English Users Accounts:\
+        :charset=UTF-8:\
+        :lang=en_US.UTF-8:\
+        :tc=default:
+        :charset=UTF-8:\
+        :lang=en_US.UTF-8:
 
-Run the following command to apply your changes:
+If you want your root user to use this class replace, around line 73 you can replace
+`:tc=default:` by `:tc=english:`. Run the following command to apply your changes:
 
     /usr/bin/cap_mkdb /etc/login.conf
+
+Only thing left is to change your users login class by editing it with `vipw` command.
+Locate your user and add english:
+
+    user:password:1111:11:english:0:0:User Name:/home/user:/bin/sh
 
 After a reboot, run ``locale`` command and you should see that UTF-8 is
 enabled.
