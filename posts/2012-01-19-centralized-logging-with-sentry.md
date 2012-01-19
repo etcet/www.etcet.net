@@ -21,6 +21,17 @@ Luckily, there is a great toolkit called [Sentry] from the people of [Disqus] wh
 
 In the following post I will show you how to setup a logging server and also how to test it in your local Django project. My server of choice is running FreeBSD, but you can use the guide here for any *Nix system.
 
+<section class="information">
+
+### UDP for Logging
+
+Sentry makes use of a TCP (HTTP) connection. This is frowned upon  for logging because it's a slow protocol due to it's "guarteed delivery". For something non critical like logging an UDP connection is better suited. 
+At the moment, the stable version of Sentry doesn't support UDP. But, for those in need of performance, it's in the making and the [first commits] have been made.
+
+[first commits]: https://github.com/dcramer/sentry/commit/e2319d258b564132a5ce6d35b1e546eb6e2c287f
+
+</section>
+
 ## Installing Sentry
 
 First, get yourself a server. I got myself a VPS at [TransIP] but you can get one at [Linode], [AWS] or [Brightbox]. Do the basic configuration like setting up users and securing SSH access. If you decided to run FreeBSD -- good choice -- just follow my "[Solid FreeBSD Server: the Foundation]" guide.
@@ -136,15 +147,22 @@ SENTRY_WEB_HOST = '0.0.0.0'
 SENTRY_WEB_PORT = 9000
 ~~~
 
-Note that we have kept the `SENTRY_PUBLIC` setting to `True`. That's so we can easily test it later on, we will switch that back to `False` when going live. Rest of the settings speak for themselves. Before trying to start Sentry, we need to initialize it's database with:
+Note that we have kept the `SENTRY_PUBLIC` setting to `True`. That's so we can easily test it later on, we will switch that back to `False` when going live. Rest of the settings speak for themselves. 
+
+It's a bit of a hassle to have to supply the location of the Sentry configuration every time we run a command. Since Sentry looks at `~/.sentry/sentry.conf.py` for the config, let's add a symlink there.
+
+	mkdir ~/.sentry
+	ln -s ~/sentry/sentry.conf.py ~/.sentry/sentry.conf.py
+
+Before trying to start Sentry, we need to initialize it's database with:
 	
 	cd ~/sentry
-	sentry upgrade --config=sentry.conf.py
+	sentry upgrade
 
 We can start the server now with the following command:
 
 	cd ~/sentry
-	sentry start --config=sentry.conf.py
+	sentry start
 
 When your port is open, you can now visit your web server at port 9000, for example `http://example.com:9000`
 
