@@ -5,7 +5,7 @@ tags: django
 description: Setting up Django's sentry
 --
 
-I like getting email, being the `Exception` if it starts with "[Django] Error…". I'm willing to bet that 95% of the Django projects out there use email for error handling their production site's. At [Bread & Pepper] we decided to do something about it because we were losing error's in our inbox and lost track of what was fixed.
+I like getting email, being the `Exception` if it starts with "[Django] Error…". I'm willing to bet that 95% of the Django projects out there use email for error handling their production sites. At [Bread & Pepper] we decided to do something about it because we were losing errors in our inbox and lost track of what was fixed.
 
 [Bread & Pepper]: http://breadandpepper.com/
 
