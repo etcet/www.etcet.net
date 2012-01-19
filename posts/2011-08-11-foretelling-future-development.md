@@ -5,30 +5,13 @@ tags: clojure, objective-c, artificial-intelligence, sicp
 description: Done building non trivial projects, in this post I describe the steps I'm going to take to be able to build beautiful software that does difficult things. I can already tell you that it involves Objective-C, Clojure, Artificial Intelligence and S.I.C.P.
 --
 
-I started running a few weeks ago and I hated it. I would start cursing during
-running -- stupid thing to do, since I need the oxygen -- while hoping that
-with time it would be better. Within four weeks, I'm cursing less and maybe,
-eventually, I will like it. If not the running, at least the shower, pajama's
-and book afterwards.
+I started running a few weeks ago and I hated it. I would start cursing during running -- stupid thing to do, since I need the oxygen -- while hoping that with time it would be better. Within four weeks, I'm cursing less and maybe, eventually, I will like it. If not the running, at least the shower, pajama's and book afterwards.
 
-The running sounded like a good analogy for what I want to tell in this
-post. It barrels down to stepping out of the comfort zone, invest in knowledge
-and reap the benefits. Years ago, I went from PHP to Python, now to
-Objective-C and Clojure. The difference with running is that I don't expect to
-curse about that which follows. I expect the occasional outburst of "Dammit, I
-could be building a random-pirate-jokalizer in Python!"[^1].
+The running sounded like a good analogy for what I want to tell in this post. It barrels down to stepping out of the comfort zone, invest in knowledge and reap the benefits. Years ago, I went from PHP to Python, now to Objective-C and Clojure. The difference with running is that I don't expect to curse about that which follows. I expect the occasional outburst of "Dammit, I could be building a random-pirate-jokalizer in Python!"[^1].
 
-But I don't want Python to be the last pen which writes my bits and bytes. I
-need a different tool for a different use. A need to evolve and tackle
-problems, not build sole entertainment or Facebook seconds. This got me
-thinking about what I should be doing with my time and I can already tell you
-that it involves the strange combination of Clojure, Objective-C, Artificial
-Intelligence and S.I.C.P.
+But I don't want Python to be the last pen which writes my bits and bytes. I need a different tool for a different use. A need to evolve and tackle problems, not build sole entertainment or Facebook seconds. This got me thinking about what I should be doing with my time and I can already tell you that it involves the strange combination of Clojure, Objective-C, Artificial Intelligence and S.I.C.P.
 
-[^1]: Don't get me wrong, I love Python and plan to keep using it. I do think
-other languages are better suited for the things I describe in this post. And
-also, Pirate jokes are awesome. Don't believe me? Send me a PM on IRC and I
-will proof you wrong.
+[^1]: Don't get me wrong, I love Python and plan to keep using it. I do think other languages are better suited for the things I describe in this post. And also, Pirate jokes are awesome. Don't believe me? Send me a PM on IRC and I will proof you wrong.
 
 ## Objective-C and Clojure
 
