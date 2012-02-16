@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>etcet - conway's game of a life</title>
+<style type="text/css">
+	* { border: 0px; margin: 0px; padding: 0px;}
+	#c { background-color: #ade; }
+	#rules {
+  	bottom: 10px;
+  	right: 10px;
+  	position: absolute;
+  	text-align: right;
+  	font-size: 1.3em;
+  }
+</style>
+
+<script type="text/javascript">
+	var size = 50;
+	var speed = 500;
+	var cells, saved_cells, changed;
+	var mouse_down = false;
+	var living_interval;
+
+	var canv;
+	var el;
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+	var cellW = w/size;
+	var cellH = h/size;
+	var mousex, mousey;
+	
+	function init() {
+		el = document.getElementById('c');
+		canv = el.getContext('2d');
+		setup_canvas();
+		setup_arrays();
+		setup_random();
+		
+		el.addEventListener("click", function(e) {
+				var x = parseInt(e.offsetX / cellW);
+				var y = parseInt(e.offsetY / cellH);
+				toggle_cell(x,y);
+			}, false);
+		el.addEventListener("mousedown", function() {
+				mouse_down = true;
+			}, false);
+		el.addEventListener("mouseup", function() {
+				mouse_down = false;
+			}, false);
+		el.addEventListener("mousemove", function(e) {
+				if (mouse_down)
+					var posx = parseInt(e.offsetX / cellW);
+					var posy = parseInt(e.offsetY / cellH);
+					if (mousex != posx) {
+						mousex = posx;
+						toggle_cell(posx,posy);
+					}
+					else if (mousey != posy) {
+						mousey = posy;
+						toggle_cell(posx,posy);
+					}
+
+			}, false);
+	}
+
+	function setup_canvas() {
+		el.setAttribute('width', w);
+		el.setAttribute('height', h);
+	}
+	
+	function setup_arrays() {
+		cells = new Array(size);
+		saved_cells = new Array(size);
+		changed = new Array(size);
+		for (var x = 0; x < size; x++) {
+			cells[x] = new Array(size);
+			saved_cells[x] = new Array(size);
+			changed[x] = new Array(size);
+				for (var y = 0; y < size; y++) {
+					saved_cells[x][y] = false;
+					cells[x][y] = false;
+					changed[x][y] = false;
+				}
+		}
+	}
+	
+	function toggle_cell(x,y) {
+		if (cells[x][y] == true) 
+			canv.fillStyle = "#ade";
+		else 
+			canv.fillStyle = "#ead";
+		
+		cells[x][y] = !cells[x][y];
+
+		canv.fillRect(parseInt(x*cellW), parseInt(y*cellH), cellW, cellH);
+	}
+	
+	function live_a_step() {
+		save_cells();
+ 
+		for (var y = 0; y < size; y++) {
+			for (var x = 0; x < size; x++) {
+				var alive = saved_cells[x][y];
+				var neighbors = count_neighbors(x,y);
+			
+				if ((alive) && (neighbors < 2)) {
+					toggle_cell(x,y);
+				}
+				else if ((alive) && (neighbors > 3)) {
+					toggle_cell(x,y);
+				}
+				else if ((!alive) && (neighbors == 3)) {
+					toggle_cell(x,y);
+				}
+			}
+		}
+	}
+	
+	function save_cells() {
+		for (var y = 0; y < size; y++) {
+			for (var x = 0; x < size; x++) {
+				saved_cells[x][y] = cells[x][y];
+			}
+		}
+	}
+	
+	function count_neighbors(x, y) {
+		var n = 0;
+	
+		if (is_alive(x-1, y-1))	n++;
+		if (is_alive(x-1, y))	n++;
+		if (is_alive(x-1, y+1))	n++;
+		if (is_alive(x, y-1))	n++;
+		if (is_alive(x, y+1))	n++;
+		if (is_alive(x+1, y-1))	n++;
+		if (is_alive(x+1, y))	n++;
+		if (is_alive(x+1, y+1))	n++;
+	
+		return n;
+	}
+ 
+	function is_alive(x, y) {
+		var alive = false;
+	
+		if ((x >= 0) && (x < size) && (y >= 0) && (y < size)) {
+			alive = cells[x][y];
+		} else {
+			alive = false;
+		}
+	
+		return alive;
+	}
+	
+	function setup_random() {
+		for (y=0;y<size;y++){
+			for (x=0;x<size;x++){
+				if (Math.random() > 0.5)
+					toggle_cell(x,y);
+			}
+		}
+	}
+	
+	function clear_cells() {
+		for (y=0;y<size;y++){
+			for (x=0;x<size;x++){
+				if (cells[x][y])
+					toggle_cell(x,y);
+			}
+		}
+	}
+	
+	function go() {
+		living_interval = setInterval(live_a_step, speed);
+	}
+	
+	function stop() {
+		clearInterval(living_interval);
+	}
+	
+	function change_cells(how_many) {
+		size += how_many;
+		if (size < 10)
+			size = 10;
+		cellW = w/size;
+		cellH = h/size;
+		init();
+	}
+	
+	function change_speed(how_much) {
+		speed += how_much;
+		if (speed < 10)
+			speed = 10;
+		stop();
+		go();
+	}
+	
+
+</script>
+<script type="text/javascript" src="/js/tracking.js"></script>
+</head>
+<body onload="init(30);">
+<canvas id="c" width="1" height="1"></canvas>
+<div id="rules">
+	<p><a href="javascript:go()"><b>play</b></a>/<a href="javascript:stop()">pause</a>/<a href="javascript:live_a_step()">step</a></p>
+	<p><a href="javascript:change_cells(20)">more</a>/<a href="javascript:change_cells(-20)">less</p>
+	<p><a href="javascript:change_speed(-50)">faster</a>/<a href="javascript:change_speed(50)">slower</a></p>
+	<p><a href="javascript:setup_random()">random</a>/<a href="javascript:clear_cells()">clear</a></p>
+</div> 
+
+</body>
+</html>

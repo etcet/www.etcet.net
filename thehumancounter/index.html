@@ -1,0 +1,160 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>etcet - Human Counter</title>
+	<meta name="description" content="Calculate how many people have ever lived and are living & learn your place in human history."/>
+	<meta name="subject" content="total world population"/>
+	<meta name="keywords" content="how many people have ever lived, web app, world population"/>
+	<meta name="category" content="web app, world population"/>
+	<link rel="stylesheet" href="pop.css"/>
+	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/tracking.js"></script>
+	<script>
+
+function calculateDateFloat(year, month, day, hour, minute, seconds, milliseconds) {
+	return parseFloat(year) + parseFloat(month)/12.0 + (parseFloat(day)-1.0)/365.242199 + parseFloat(hour)/8765.81277 + parseFloat(minute)/525948.766 + parseFloat(seconds)/31556926.0 + parseFloat(milliseconds)/31556926000.0;
+}
+function estimatePeopleBorn(dateF) {
+	//piecewise at 0<1200<=now
+	if (dateF < -8000.0)
+		return Math.floor(1.35451e9 + 27090.2*dateF);
+	else if (dateF < 0.0)
+		return Math.floor(4.71574e10 + 5.75245e6*dateF);
+	else if (dateF < 1200.0)
+		return Math.floor(4.71409e10 + 2.21779e7*dateF);
+	else		
+		return Math.floor(1.44382e11 - 1.17679e8*dateF + 49270.2*dateF*dateF);
+}
+function estimatePopulation(dateF) {
+	return Math.floor(8.0747e11 - 8.81222e8*dateF + 240260*dateF*dateF);
+}
+function addCommas(population){
+	return String(population).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+}
+function addOrdinal(population) {
+	var suffix = ["th","st","nd","rd"];
+	var val = population%100;
+	return population + (suffix[(val-20)%10] || suffix[val] || suffix[0]);
+}
+
+function validateForm() {
+	var day = parseInt($('#day').val());
+	var year = parseInt($('#year').val());
+	iserrorfree = true;
+	if (!day || (day < 1 || day > 31)) {
+		var errorelem = $('#error_day');
+		errorelem.text('Please enter a day of the month from 1 to 31.');
+		$('#day').css('background-color','#dde');
+		errorelem.show();
+		iserrorfree = false;
+	}
+	else {
+		$('#day').css('background-color','#fff');
+		$('#error_day').hide();
+	}
+	if (isNaN(year)) {
+		var errorelem = $('#error_year');
+		errorelem.text('Please enter a numerical year');
+		$('#year').css('background-color','#ded');
+		errorelem.show();
+		iserrorfree = false;
+	}
+	else {
+		$('#year').css('background-color','#fff');
+		$('#error_year').hide();
+	}
+	return iserrorfree;
+}
+
+function getDate() {
+	var thisdate = new Date();
+	return calculateDateFloat(thisdate.getFullYear(), thisdate.getMonth(), thisdate.getDate(), thisdate.getHours(), thisdate.getMinutes(), thisdate.getSeconds(), thisdate.getMilliseconds());
+}
+
+var updateinterval;
+var thedate = getDate();
+
+$(document).ready(function() {
+	//hook back anchor
+	$("#back a").click(function() {
+		$("#userstats").fadeOut(1000,function() {
+			$("#userstats p").hide();
+			$("#dateform").fadeIn(500);
+		});
+	});
+	//set interval to calculate people born since now and total population now
+	updateinterval = setInterval(function() {
+		thedate = getDate();
+		$("#bornsincenow").text(addCommas(addOrdinal(estimatePeopleBorn(thedate))));
+		$("#populationnow").text(addCommas(estimatePopulation(thedate)));
+		$("#alivepercent").text( Math.round(estimatePopulation(thedate)/estimatePeopleBorn(thedate)*10000)/100 );
+	}, 100);
+	
+	$('form').submit(function() {
+		if (!validateForm()) {
+			return false;
+		}
+		userdateF = calculateDateFloat($('#year').val(), $('#month').val(), parseFloat($('#day').val()),0.0,0.0,0.0,0.0);
+		peoplebornbeforeuser = estimatePeopleBorn(userdateF);
+		$("#bornbeforeuser").text(addCommas(addOrdinal(peoplebornbeforeuser)));
+		var thedate = getDate();
+		$("#beforepercent").text( Math.round( (peoplebornbeforeuser/estimatePeopleBorn(thedate))*10000)/100  );
+
+		$("#dateform").fadeOut(500,function() {
+			$("#userstats").show();
+			$("#userstats p:first-child").fadeIn(1000, function() {
+				$("#userstats p:nth-child(2)").fadeIn(1000)
+				$("#userstats p:nth-child(3)").fadeIn(1000)
+			});
+		});
+
+		//do not post to php
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+	<header><h2>the</h2><h1>human counter</h1></header>
+	<div id="worldstats">
+		<p>There are <span id="populationnow" class="stat"></span> people alive right now.</p>
+		<p>The <span id="bornsincenow" class="stat"></span> person was just born.</p>
+		<p><span id="alivepercent" class="stat"></span>% of all the people who have ever been alive are currently living.</p>
+	</div>
+	<form name="pop" id="dateform"  method="get">
+		<p>I was born in the month of 
+			<select name="m" id="month">
+				<option value="0">January</option>
+				<option value="1">February</option>
+				<option value="2">March</option>
+				<option value="3">April</option>
+				<option value="4">May</option>
+				<option value="5">June</option>
+				<option value="6">July</option>
+				<option value="7">August</option>
+				<option value="8">October</option>
+				<option value="9">September</option>
+				<option value="10">November</option>
+				<option value="11">December</option>
+			</select>
+		</p>
+		<p>on day <input type="number" name="d" id="day" min="1" max="31" value="1"></input></p>
+		<p>in the year <input type="number" name="y" id="year" value="1970" min="1" max="3000"></input></p>
+		<p class="error" id="error_day"></p>
+		<p class="error" id="error_year"></p>
+
+		<input type="submit" id="button" value="So what?"></input>
+	</form>
+
+	<div id="userstats">
+		<p>You are approximately the <span id="bornbeforeuser" class="stat"></span> human to have ever lived.</p>
+		<p><span id="beforepercent" class="stat"></span>% of all people ever born were born before you.</p>
+		
+		<p id="back"><a href="#"><small>Go back</small></a></p>
+	</div>
+	<footer><a href="/">etcet.net</a></footer>
+
+</body>
+</html>

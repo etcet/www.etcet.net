@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>The World WIDE Web</title>
+<style type="text/css">
+body {
+	padding-left: 32px;
+	margin: 12px;
+  color: #222;
+  font-family: "Trebuchet MS",Trebuchet,Calibri,Tahoma,Arial,sans-serif;
+  line-height: 1.7em;
+}
+
+.columns {
+	-moz-column-width: 300px;
+	-webkit-column-width: 300px;
+}
+
+.columns img {
+ width: 100%;
+}
+
+.columns p {
+	text-indent: 2em;
+}
+
+.columns h1 {
+	text-align: right;
+	padding-bottom: 1em;
+	border-bottom: 1px solid;
+	margin-bottom: 1em;
+}
+
+.columns h2 {
+	text-align: left;
+	padding-top: 1em;
+	padding-bottom: .5em;
+}
+
+.columns h3 {
+	padding-top: .8em;
+	padding-bottom: .5em;
+}
+
+* {
+	border: 0;
+	margin: 0;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript" src="columns.js"></script>
+<script type="text/javascript" src="/javascripts/tracking.js"></script>
+</head>
+<body>
+<div class="columns">
+	<h1>The World <em>Wide</em> Web</h1>
+	<p>If you've bought a new monitor, TV, or laptop in the last couple of years, then the chances are it's significantly wider than it is tall. This trend has stretched lines of text beyond comprehensibility.</p>
+	<h2>Losing Height</h2>
+	<p>Let's do an experiment, maximize your browser and head to <a href="http://en.wikipedia.org/wiki/Special:Random">Wikipedia</a>. Try reading it. Now, shrink the window until it takes up a horizontal half of your screen. Try again. Doesn't that just feel better? Maybe it's because this is how we've been casually reading for centuries.</p>
+	<img src="widescreen.png" title="16:10 widescreen" alt="16:10 widescreen"/>
+	<p>A modern screen has an aspect ratio of 16:10, that means that it is 1.6 times wider than it is tall.</p> 
+	<img src="fullscreen.png" title="4:3 fullscreen" alt="4:3 fullscreen"/>
+	<p>The older standard is 4:3, or 1.33.</p>
+	<img src="paperback.png" title="3:5 paperback" alt="3:5 paperback"/>
+	<p>A pocket paperback book is 3:5, or 0.6.</p>
+	<p>That's dramatic, but it gets worse. In general, desktop environments are not optimized for wide screens. By default, Firefox maximized in Windows 7 at 1680x1050 has about 132 pixels above the content and 62 pixels below the content, squeezing the aspect ratio to around <em>19</em>:10.</p>
+	<h3>Window Managers</h3> 
+	<p>Mac OS X, Gnome, and KDE all default to give less vertical real estate. The effect of the desktop can be mostly mitigated with vertically oriented panels, auto-hiding, and transparency. Some window managers do these things better than others. Microsoft's panel works beautifully on the left side of the desktop. Gnome's panels do everything wrong, but Avant Window Navigator is an elegant solution for Linux. I'm not an expert, but I believe Mac users are eternally stuck with the menu bar.</p>
+	<h3>Browsers</h3>
+	<p>Google know about the wide problem. Because they decided to render their windows themselves, the top height of Google Chrome is about half that of Firefox, with Internet Explorer falling somewhere between the two. Chrome also saves 64 pixels at the bottom because its status bar is usually hidden. Hiding your bookmarks toolbar regains some vertical space. On Firefox, you can customize you toolbar to use small icons and there are many themes that try to minimize the user interface.</p>
+	<h2>Designing Wide</h2>
+	<p>A wide screen can be ideal. The human eye sees an aspect ratio somewhere near 1.75 so it's not surprising that films usually have high aspect ratios. Wide screens can also be ideal for reading. If you turn your monitor 90 degrees, it would have a 10:16, or 0.625, aspect ratio, amazingly close to that of a book. In an ideal world all screens would rotate. Until then, let's adapt.</p>
+	<img src="typical.png" title="typical content" alt="typical content"/>
+	<p>Web sites almost always grow downwards. A single column produces very long lines.</p>
+	<img src="csscolumns.png" title="traditional css columns" alt="traditional css columns"/>
+	<p>Using CSS to create columns is a popular technique for managing excessive width. The drawback is that space is underutilized by the actual content of the page.</p>
+	<img src="tallcolumns.png" title="css3 columns" alt="css3 columns"/>
+	<p>CSS3 provides support for natural multi-column layouts. By default, these columns expand to fill the width of the screen before getting longer. Notice that reading these columns requires excessive scrolling.</p>
+	<h3>Turning the paradigm on its side</h3>
+	<img src="horizontalcolumns.png" title="horizontal columns" alt="horizontal columns"/>
+	<p>We can force CSS3 columns to fill a fixed vertical height before growing horizontally by setting the height attribute. If we set the column height to 100% then the columns will grow no bigger than the window height. Vertical scrolling is eliminated.</p>
+	<p>This format closely follows the archetypes in print media. Screen space is utilized optimally without sacrificing readability.</p>
+	<p>Because content grows to the right it transforms the notion of scrolling; JavaScript can be used to conform behavior to natural expectations: scrolling on column increments either left or right. JavaScript is in fact used both to set the height of the columns as well as change scrolling behavior since one without the other is useless.</p>
+	<h3>Enhancing Progressively</h3>
+	<p>CSS3 isn't finalized and implementations of it differ or do not exist. Without CSS3 or JavaScript, this site is acceptable (but not optimal). This layout looks good in resolutions from HVGA upwards with a single style. Try resizing your browser to see how well it copes.</p>
+	<br/>
+	<br/>
+	<p>This article rubbed some people the wrong way <a 
+href="http://www.reddit.com/r/web_design/comments/awzis/maximizing_readability_on_wide_screens_with_css3">on reddit</a>. Someone even wrote a <a 
+href="http://www.reddit.com/r/web_design/comments/azkpo/lessons_learned_examining_the_idea_of/">rebuttal</a>.</p>
+</div>
+
+</body>
+</html>

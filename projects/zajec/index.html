@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>etcet - zajec imitation</title>
+<script type="text/javascript">
+	var filenames = ['d.png', 'w.png', 'h.png', 'b.png', 'dthb.png', 'htbb.png', 'btdb.png', 'bthb.png'];
+	var count = 600;
+	
+	
+	function init() {
+		var parameter = gup('x');	
+	
+		for (var i = 0; i< count; i++) {
+			x = document.createElement('img');
+			
+			if (parameter)
+				x.src = filenames[parameter.charAt(i)];
+			else 
+				x.src = 'd.png';
+				
+			x.onclick = function(e) { changeimg(e, 1); };
+			x.oncontextmenu = function(e) { changeimg(e, -1); return false; };
+			document.getElementById('boxes').appendChild(x);
+		}
+	}
+	
+	//get url parameter; taken from http://www.netlobo.com/url_query_string_javascript.html
+	function gup( name ) {
+  	name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  	var regexS = "[\\?&]"+name+"=([^&#]*)";
+  	var regex = new RegExp( regexS );
+  	var results = regex.exec( window.location.href );
+  	if( results == null )
+  	  return "";
+  	else
+  	  return results[1];
+	}
+	
+	function changeimg(e, to) {
+		var filename = e.srcElement.src.split('/').pop();
+		var index = filenames.indexOf(filename);
+		index = index + to;
+		if (index > 7)
+			index = 0;
+		else if (index < 0)
+			index = 7;
+		e.srcElement.src = filenames[index];
+		
+		createlink();
+	}
+	
+	function createlink() {
+		var link = "index.html?x=";
+	
+		for (var i = 0; i < count; i++ ){
+			filename = document.getElementsByTagName('img')[i].src.split('/').pop();
+			var index = filenames.indexOf(filename);
+			link = link + index;
+		}
+		document.getElementById('link').href = link;
+	}
+</script>
+<style type="text/css">
+	body {
+	}
+	body p {
+		background: #fff;
+	}
+	#boxes {
+		margin: auto;
+		height: 640px;
+		width: 960px;
+		border: 1px solid black;
+	}
+	#boxes img {
+		width: 32px;
+		height: 32px;
+	}
+
+</style>
+<script type="text/javascript" src="/js/tracking.js"></script>
+</head>
+<body onload="init(); return false;">
+	<p>In 1970, Edward Zajec, in collaboration with Matjaz Hmeljak, created <b>The Cube: The and Variations (T.V.C.)</b> on an <a href="http://www.columbia.edu/acis/history/a02.jpg">IBM 7040</a> using FORTRAN IV. A language of 8 basic patterns and a set of syntactic rules is used to create a composition. These days you can do it real time. Algorithm not yet implemented. Left click cycles forward, right click backwards.</p>
+	<p>Examples: <a href="index.html?x=000000000000000000000000000000004225000000000000000000000000042253000000000000000000000000011133000000000000000000000000017136000000000000000000000000011160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">The Cube</a>, <a href="index.html?x=000000000000000000000000000000000000000000004500000000000000042250000000001600000000000000011130004500000000000000000000017130001600004250000000000000011160000000001130000000000000000000000000001160000000000000004250042250000000000000000000001130011160000042500000000000000160000000000425300000000000000000000000000113300000000000000000004500004225600000000000004500001300001117250000000000001750001300001111175000000000001160001600001111116000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000#">Forms</a>, <a href="index.html?x=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000422504225042250422504225000000111601116011160111601116000000172500130013000172500130000000111600130013000111600130000000172500130017250172500130000000111600160011160111600160000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000">ETCET</a></p>
+	<div id="boxes">
+	</div>
+	<p><a href="#" id="link">Link this image</a></p>
+</body>
+</html>

@@ -1,0 +1,130 @@
+@font-face {
+  font-family: 'DroidSansRegular';
+  src: url('http://etcet.net/f/DroidSans.eot');
+  src: url('http://etcet.net/f/DroidSans.ttf') format('truetype');
+}
+
+body {  
+  font-family: 'DroidSansRegular',"Trebuchet MS",Trebuchet,Calibri,Tahoma,Arial,sans-serif;
+  font: normal 100%;
+  color: #333;
+  background-color: #ede;
+	margin: 1em 1em 1em 1em;
+}
+
+img {
+	max-width: 600px;
+}
+header { 
+	//font-family: 'Coda', arial, serif; 
+	max-width: 400px;
+	margin: 0px auto;
+}
+h2 {
+	font-size: 32px;
+	margin: 0px;
+}
+h1 {
+	margin: 0px;
+	font-size: 64px;
+}
+h1,h2 {
+	width: 300px;
+	padding-left: 60px;
+}
+
+a {
+  color: #065EC6;
+	text-decoration: none;
+}
+a:hover, #button:hover {
+	text-decoration: underline; 
+}
+
+body > p, #userstats p, #worldstats p {
+	text-align: center;
+}
+#userstats, #worldstats {
+	padding-top: 3em;
+}
+#userstats {
+	display: none;
+}
+#userstats p {
+	display: none;
+}
+.error {
+	display: none;
+	font-size: 90%;
+}
+#error_day {
+	color: #667;
+}
+#error_year {
+	color:#676;
+}
+
+.stat {
+	color: #000;
+}
+#how {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+code {
+	display: block;
+}
+code.in {
+	font-weight: bold;
+	margin: .4em; 0em;
+}
+code.out {
+	margin: 1em 1em;
+}
+code.c {
+	color:#488E48;
+}
+
+#button {
+	font-family: 'DroidSansRegular',"Trebuchet MS",Trebuchet,Calibri,Tahoma,Arial,sans-serif;
+	font-size: 120%;
+	margin-top: 1em;
+	background: inherit;
+	color: #065ec6;
+	border:none;
+}
+#button:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+select, option, input {
+	font-family: 'DroidSansRegular',"Trebuchet MS",Trebuchet,Calibri,Tahoma,Arial,sans-serif;
+	font-size: 100%;
+	text-align: right;
+	background-color: #fff;;
+}
+
+form {
+	text-align: right;
+	max-width: 400px;
+	margin: 0px auto;
+	padding-top: 2em;
+}
+
+#day, #year {
+	text-align: right;	
+	width: 5em;
+}
+
+#back {
+	margin: 5em 0em;
+}
+
+footer {
+	position: fixed;
+	bottom: 3px;
+	right: 5px;
+	font-size: 75%;
+}

@@ -1,6 +1,6 @@
-#/usr/bin/env zsh
+#/usr/bin/env bash
 sitedir="_site/"
-s3bucket="s3://s3.wunki.org"
+s3bucket="s3://www.etcet.net"
 
 # Clean and build the site
 echo "Cleaning old files.."
@@ -52,16 +52,16 @@ s3cmd sync \
       $sitedir $s3bucket > /dev/null 2>&1
 
 # Revalidate Cloudfront
-if [[ $# -eq 1 ]];then
-  echo "Invalidating cache"
-  cfadmin invalidate s3.wunki.org.s3.amazonaws.com \
-       /index.html \
-       /stylesheets \
-       /images \
-       /posts \
-       /tags \
-       > /dev/null 2>&1
-fi
+#if [[ $# -eq 1 ]];then
+#  echo "Invalidating cache"
+#  cfadmin invalidate s3.wunki.org.s3.amazonaws.com \
+#       /index.html \
+#       /stylesheets \
+#       /images \
+#       /posts \
+#       /tags \
+#       > /dev/null 2>&1
+#fi
 # Finished, cleanup
 ./wunki clean > /dev/null 2>&1
 echo "Finished uploading site.."
