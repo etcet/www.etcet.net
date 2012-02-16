@@ -18,6 +18,11 @@ main = hakyllWith config $ do
       route   idRoute
       compile compressCssCompiler
     
+    -- Copy fonts
+    match "fonts/*" $ do
+      route   idRoute
+      compile copyFileCompiler
+
     -- Copy images
     match "images/*" $ do
       route   idRoute

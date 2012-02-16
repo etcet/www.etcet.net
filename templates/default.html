@@ -9,16 +9,13 @@
     <meta name="generator" content="hakyll"/>
 
     <!--[if lt IE 9]>
-    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" media="all" href="/stylesheets/screen.css">
     <!--<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">-->
 
     <link rel="alternate" type="application/rss+xml" title="etcet.net - Chris James" href="https://www.etcet.net/rss.xml">
     <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
-
-    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Volkhov' rel='stylesheet' type='text/css'>
   </head>
 
   <body class="$bodyclass$">
@@ -29,9 +26,26 @@
       <p>etcet.net - <a href="/rss.xml" title="RSS Feed">RSS</a> - Chris James - chris@etcet.net</p>
     </footer>
 
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10884364-1']);
+      _gaq.push(['_setDomainName', 'etcet.net']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     <script type="text/javascript" src="/javascripts/domready.min.js"></script>
     <script type="text/javascript">
       DomReady.ready(function() {
+        //hide meta cos flickers
+        var sheet = document.createElement('style');
+        sheet.innerHTML = ".meta { display: none }";
+        document.body.appendChild(sheet);
+
         function getScript(url,success){
           var script=document.createElement('script');
           script.src=url;
@@ -47,9 +61,10 @@
           };
           head.appendChild(script);
         }
-        getScript('http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',function(){
+        getScript('/javascripts/jquery-1.7.1.min.js',function(){
           getScript('/javascripts/jquery.timeago.min.js', function() {
             $("time.timeago").timeago();
+            $(".meta").fadeIn();
           });
         });
       });
