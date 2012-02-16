@@ -74,6 +74,9 @@ h2, .description {
 }
 
 
+h2:hover .amp_sep, h3:hover .amp_sep {
+  color: #000;
+}
 .amp_sep {
   position: relative;
   float: left;
@@ -84,10 +87,16 @@ h1 .amp_sep {
   left: -30px;
   top: -5px;
 }
-ul .amp_sep, h2 .amp_sep{
+ul .amp_sep, h2 .amp_sep {
+  top: 8px;
+}
+h3 .amp_sep {
+  top: 5px;
+}
+ul .amp_sep, h2 .amp_sep, h3 .amp_sep{
+  color: #999;
   left: -20px;
   font-size: 12px;
-  top: 8px;
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
