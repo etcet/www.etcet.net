@@ -36,9 +36,11 @@ a:hover {
 p {
 	line-height: 1.5em;
 }
-.post_body, p.description {
-  color: #555;
+.post_body, p.description, .note {
   font-family: 'Volkhov', serif;
+}
+.note {
+  color: #bbb;
 }
 footer {
   color: #000;
@@ -69,10 +71,6 @@ h2, .description {
 }
 .description {
   margin: .1em;
-}
-.description .note {
-  display: block;
-  color: #bbb;
 }
 
 
