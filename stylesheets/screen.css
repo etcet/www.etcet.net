@@ -1,19 +1,16 @@
-@font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Quicksand Regular'), local('Quicksand-Regular'), url('/fonts/quicksand.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Volkhov';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Volkhov Regular'), local('Volkhov-Regular'), url('/fonts/volkhov.ttf') format('truetype');
-}
+/*@font-face {
+    font-family: 'QuicksandBook';
+    src: url('/fonts/Quicksand_Book-webfont.eot');
+    src: url('/fonts/Quicksand_Book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Quicksand_Book-webfont.svg#QuicksandBook') format('svg');
+         url('/fonts/Quicksand_Book-webfont.woff') format('woff'),
+         url('/fonts/Quicksand_Book-webfont.ttf') format('truetype'),
+    font-weight: normal;
+    font-style: normal;
+}*/
 
 body {
-	font-family: 'Quicksand',"Trebuchet MS",Trebuchet,Calibri,Tahoma,Arial,sans-serif;
+  font-family:sans-serif;
 	font: normal 100%;	
 	margin: 0;
 	color: #333;
@@ -37,7 +34,7 @@ p {
 	line-height: 1.5em;
 }
 .post_body, .description, .note {
-  font-family: 'Volkhov', serif;
+  font-family: serif;
 }
 .note {
   color: #bbb;
@@ -74,9 +71,6 @@ h2, .description {
 }
 
 
-h2:hover .amp_sep, h3:hover .amp_sep {
-  color: #000;
-}
 .amp_sep {
   position: relative;
   float: left;

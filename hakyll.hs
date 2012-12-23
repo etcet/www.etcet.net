@@ -50,10 +50,6 @@ main = hakyllWith config $ do
     match "projects/*/*" $ do
       route   idRoute
       compile copyFileCompiler
-    match "thehumancounter/*" $ do
-      route idRoute
-      compile copyFileCompiler
-    
 
     -- Copy robots.txt
     match "robots.txt" $ do
@@ -133,7 +129,7 @@ main = hakyllWith config $ do
     -- Read templates
     match "templates/*" $ compile templateCompiler
 
-    -- Render pages witouth relative url's
+    -- Render pages without relative url's
     forM_ ["404.md"] $ \p ->
         match p $ do
             route $ setExtension ".html"
@@ -192,15 +188,16 @@ wunkiWriterOptions = defaultHakyllWriterOptions
 
 config :: HakyllConfiguration
 config = defaultHakyllConfiguration
---  { deployCommand = "rsync --checksum -ave 'ssh -p 22000' \
---                     \_site/* wunki@141.138.137.36:/usr/local/www/wunki"
---  }
+  { deployCommand = "rsync --checksum -ave 'ssh -p 2222' \
+                     \_site/* etcetn@etcet.net:/home/etcetn/www/"
+  }
     
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
     { feedTitle = "etcet.net"
     , feedDescription = "Homepage of Chris James"
     , feedAuthorName = "Chris James"
+    , feedAuthorEmail = "cgjames@gmail.com"
     , feedRoot = "http://www.etcet.net"
     }
 
